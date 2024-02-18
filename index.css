@@ -1,0 +1,203 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #f5f5f5;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.login_bar{
+    box-sizing:border-box;
+    /* background-color:aquamarine;  */
+    margin-left: 59%;
+    margin-bottom: 0.1cm;
+    margin-top: 0.3cm;
+    
+}
+.login_bar input{
+    margin-right: 0.5cm;
+    width: 6cm;
+    border-radius:5px  solid #000000;
+}
+.login_bar a{
+    text-decoration: none;
+    padding-left: 0.1cm;
+    padding-right: 0;
+}
+
+.home_bar{
+    box-sizing: border-box;
+    background-color: antiquewhite;
+    
+}
+.home_bar ul{
+    display: flex;
+}
+
+.intro_picture{
+    display:block;
+    background-color: aquamarine;
+    margin-top: 1cm;
+}
+
+/*------------COLLECTION--------------*/
+#collection_block{
+    display: block;
+    margin: 10px 0px;
+}
+
+#collection_block #title_collection{
+    text-align: center;
+    margin-bottom: 0.5cm;
+    font-size: 25px;
+}
+
+#collection_block #title_collection a{
+    color: #000000;
+}
+
+#collection_block .men_collection{
+    display:inline-block;
+    text-align: left;
+    margin-left: 5.5cm;
+    margin-right: 0.5cm;
+}
+
+#collection_block .women_collection{
+    display:inline-block;
+    margin-right: 5cm;
+}
+
+/*-------------BEST SELLER------------*/
+.best_seller_block{ 
+    background-color:steelblue;
+    height: auto;
+    margin-top: 1cm;
+    padding-bottom: 1cm;
+}
+
+.best_seller_block #title_bs{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0.5cm;
+}
+
+.best_seller_block #title_bs a{
+    color:#000000;
+}
+
+.best_seller_block .product_bs ul{
+    display: flex;
+}
+.best_seller_block .product_bs ul li{
+    width: 10px;
+}
+#list_product{
+    display: flex;
+    padding: 1cm;
+    margin: 1cm;
+    background-color: aquamarine;
+}
+#list_product .item{
+    background-color:brown;
+    display: block;
+}
+#list_product .item div{
+    text-align: center;
+}
+#list_product .item img{
+    width: 300px;
+    height: 300px;
+} 
+
+footer{
+    background-color: #000000;
+    margin-top: 5cm;
+}
+.policy{
+    box-sizing: border-box;
+    border-bottom: 1px solid #ececec;
+    padding: 20px 30px 0px 0px;
+    padding-bottom: 0.5cm;
+}
+
+.policy ul{
+    display: flex;
+}
+
+.policy ul li a{
+    color: #ececec;
+    text-decoration: none;
+}
+
+.contact_container{
+    padding-top: 0.3cm;
+}
+.contact{
+    box-sizing: border-box; 
+    /* background-color:blueviolet;  */ 
+    color:#ececec;
+    text-decoration: none;
+    display: inline-block;
+    width: 8cm;
+    margin-top: 10px;
+    margin-left: 2cm;
+}
+
+.shop_info{
+    box-sizing: border-box; 
+    /* background-color:brown ; */
+    color:#ececec;
+    text-decoration: none;
+    display: inline-block;
+    width: 8cm;
+    margin: 10px;
+    margin-right: 2cm;
+    float: right;
+}
+
+#footer_mail{
+    margin: 20px 0px 10px 10px;
+    text-align: center;
+    padding-right: 0.5cm;
+}
+
+#footer_mail input{
+    border: none;
+    border-radius: 5px;
+    padding: 2.5px;
+    width: 7cm;
+}
+
+#footer_mail button{
+    border-radius: 5px;
+    border: none;
+    width: 1.5cm;
+    height: 25px;
+}
+
+.social_contact{
+    box-sizing: border-box;
+    /* background-color: blue; */
+    color:#ececec;
+    text-decoration: none;
+    height: auto;
+    display:block;
+    width: 10cm;
+    padding-bottom: 1cm;
+}
+
+.social_contact a{
+    color: #ececec;
+    text-decoration: none;
+}
+
+.social_contact span{
+    margin-left: 1cm;
+}
+
