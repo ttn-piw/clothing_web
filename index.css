@@ -33,19 +33,23 @@ header{
 .home_bar{
     box-sizing: border-box;
     background-color: antiquewhite;
-    
+    padding: 0.5cm 0cm;
+    margin-top: 0.3cm;
 }
 .home_bar ul{
     display: flex;
 }
 
 .intro_space{
+    /* width: 100%; */
     width: 1300px;
     max-width: 100vw;
+    padding: 0;
     height: 700px;
     margin: 1cm auto;
     position: relative;
-}
+    /* overflow:hidden;*/
+} 
 .intro_space .slide_show{
     position: absolute;
     top:0;
@@ -55,7 +59,7 @@ header{
     width:max-content;
 }
 .intro_space .slide_show img{
-    width:1300px;
+    width: 1300px;
     max-width: 100vw;
     height: 100%;
     object-fit: cover;
@@ -64,14 +68,44 @@ header{
     position: absolute;
     top: 45%;
     left: 0%;
-    width:90%;
+    width:100%;
     display: flex;
     justify-content: space-between;
+    padding:0;
 }
-.buttons button
+.buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color:#fff;
+    border: none;
+}
+#btnNext{
+    margin-left: 90%;
+}
 
-.intro_space .dots{
-    font-size: 0.7cm;;
+.dots{
+    font-size: 0.7cm;
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    width:100%;
+    margin:0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color:#fff;
+    margin: 20px;
+    border-radius: 20px;
+}
+.dots li.active{
+    width:30px;
 }
 /*------------COLLECTION--------------*/
 #collection_block{
@@ -92,7 +126,7 @@ header{
 #collection_block .men_collection{
     display:inline-block;
     text-align: left;
-    margin-left: 5.5cm;
+    margin-left: 26.5%;
     margin-right: 0.5cm;
 }
 
