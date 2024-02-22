@@ -114,25 +114,36 @@ header{
 }
 
 #collection_block #title_collection{
-    text-align: center;
     margin-bottom: 0.5cm;
     font-size: 25px;
 }
 
 #collection_block #title_collection a{
     color: #000000;
+    display: block;
+    text-align: center;
 }
 
-#collection_block .men_collection{
-    display:inline-block;
-    text-align: left;
-    margin-left: 26.5%;
-    margin-right: 0.5cm;
+#collection_block .content_collection{
+    display: flex;
+    height: 50%;
+    justify-content: space-between;
+}
+#collection_block .content_collection .men_collection{
+    max-width: 350px;
+    overflow: hidden;
 }
 
-#collection_block .women_collection{
-    display:inline-block;
-    margin-right: 5cm;
+#collection_block .content_collection .men_collection a:hover img{
+    transform: scale(1.1);
+}
+
+#collection_block .content_collection .women_collection{
+    max-width: 350px;
+    overflow: hidden;
+}
+#collection_block .content_collection .women_collection a:hover img{
+    transform: scale(1.1);
 }
 
 /*-------------BEST SELLER------------*/
