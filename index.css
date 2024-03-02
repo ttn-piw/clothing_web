@@ -39,16 +39,23 @@ header{
 .home_bar ul{
     display: flex;
 }
+.home_bar ul li a{
+    text-decoration: none;
+    color:#000000;
+}
+.home_bar ul li:hover a {
+    border-bottom: 1px solid black;
+    padding: 0.2cm;
+}
 
 .intro_space{
-    /* width: 100%; */
     width: 1300px;
     max-width: 100vw;
     padding: 0;
-    height: 700px;
+    height: 900px;
     margin: 1cm auto;
     position: relative;
-    /* overflow:hidden;*/
+    overflow:hidden;
 } 
 .intro_space .slide_show{
     position: absolute;
@@ -57,6 +64,7 @@ header{
     height: 100%;
     display: flex;
     width:max-content;
+    transition: 1s;
 }
 .intro_space .slide_show img{
     width: 1300px;
@@ -68,6 +76,7 @@ header{
     position: absolute;
     top: 45%;
     left: 0%;
+    padding-right: 5%;
     width:100%;
     display: flex;
     justify-content: space-between;
@@ -103,9 +112,15 @@ header{
     background-color:#fff;
     margin: 20px;
     border-radius: 20px;
+    transition: 1s;
 }
-.dots li.active{
+.dots li.animation{
     width:30px;
+}
+@media screen and (max-width: 768px) {
+    .intro_space{
+        height: 500px;
+    }
 }
 /*------------COLLECTION--------------*/
 #collection_block{
@@ -132,6 +147,27 @@ header{
 #collection_block .content_collection .men_collection{
     max-width: 350px;
     overflow: hidden;
+}
+
+.text_collection_men{
+    display: block;
+    color: #ececec;
+    font-weight: 1000;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    bottom: 50%;
+    text-align: center;
+}
+.text_collection_women{
+    display: block;
+    color:#000000;
+    font-weight: 1000;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    bottom: 50%;
+    text-align: center;
 }
 
 #collection_block .content_collection .men_collection a:hover img{
