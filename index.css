@@ -7,47 +7,157 @@
 header{
     background-color: #f5f5f5;
     text-align: center;
+    padding-left: 20px;
     font-size: 30px;
     padding-top: 10px;
 }
 
-.login_bar{
-    box-sizing:border-box;
-    /* background-color:aquamarine;  */
-    margin-left: 59%;
-    margin-bottom: 0.1cm;
-    margin-top: 0.3cm;
-    
+#cart{
+    float:right ;
+    padding-top: 10px;
+    padding-right: 30px;
+    font-size: 20px;
+    cursor: pointer;
 }
-.login_bar input{
-    margin-right: 0.5cm;
-    width: 6cm;
-    border-radius:5px  solid #000000;
+.hamburger{
+    display: none;
 }
-.login_bar a{
-    text-decoration: none;
-    padding-left: 0.1cm;
-    padding-right: 0;
+.bar{
+    height: 2px;
+    width: 27px;
+    background-color:aqua;
+    margin: 5px 0px;
 }
-
 .home_bar{
-    box-sizing: border-box;
-    background-color: antiquewhite;
-    padding: 0.5cm 0cm;
+    background-color: #242526;
+    padding: 15px 15px;
     margin-top: 0.3cm;
+    width: 100%;
+    height:max-content;
 }
 .home_bar ul{
     display: flex;
 }
-.home_bar ul li a{
+.home_bar #close_menu{
+    display: none;
+}
+.home_bar > ul > li a{
     text-decoration: none;
-    color:#000000;
+    color:#fff;
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
-.home_bar ul li:hover a {
-    border-bottom: 1px solid black;
+.home_bar > ul > li:hover > a {
+    background-color: white;
+    color: #000000;
     padding: 0.2cm;
-}
+    border-radius: 5px;
+    transition: 0.3s ease-in;
 
+}
+.home_bar .men_menu{
+    /* background-color: aqua; */
+    background-color: #242526;
+    display: block;
+    top: 100px;
+    padding-left: 10px;
+    width: 140px;
+    position: absolute;
+    height: max-content;
+    line-height: 50px;
+    z-index: 999;
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+}
+.home_bar li:hover .men_menu{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s;
+}
+.men_menu li:hover a{
+    background-color: white;
+    color: #000000;
+    padding: 0.2cm;
+    border-radius: 5px;
+    transition: 0.5s ease-in;
+}
+@media screen and (max-width: 768px) {
+    .home_bar .men_menu{
+        top:100px;
+    }
+}
+@media screen and (max-width: 700px)  {
+    .home_bar--open {
+        transform: translate(0) !important;
+        transition: 0.5s;
+        z-index: 999;
+    }
+    header{
+        all:unset;
+        display: block;
+        font-size: 30px;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        background-color:#ececec;
+    }
+    #cart{
+        position:relative;
+        float: left;
+        visibility: visible;
+        font-size: 25px;
+        padding: 0 0 0px 10px;
+    }
+    #logo{
+        font-size: 50px;
+    }
+    .hamburger{
+        float: right;
+        visibility:visible;
+        display: inline;
+        cursor: pointer;
+        padding-right: 10px;
+    }
+    .home_bar{
+        position: absolute;
+        background-color:#242526;
+        width: 100%;
+        margin-left: 00%;
+        height: 100%;
+        max-width: 100%;
+        z-index: 999;
+        transform: translate(-100%);
+        transition: 0.5s;
+        opacity: 0.9;
+    }
+    .home_bar #close_menu{
+        display: block;
+        font-size: 30px;
+        color: #fff;
+        float: right;
+        padding-right: 15px;
+        cursor: pointer;
+    }
+    
+    .home_bar ul{
+        flex-direction: column;
+        padding-top: 30px;
+        align-items: center;
+        line-height: 90px;
+    }
+    .home_bar ul li {
+        color: #000000;
+        text-decoration: none
+    }
+    .home_bar li:hover .men_menu{
+        opacity: 1;
+        visibility: hidden;
+    }
+    
+}
 .intro_space{
     width: 1300px;
     max-width: 100vw;
@@ -141,11 +251,11 @@ header{
 
 #collection_block .content_collection{
     display: flex;
-    height: 50%;
-    justify-content: space-between;
+    height: 700px;
+    padding: 0;
 }
 #collection_block .content_collection .men_collection{
-    max-width: 350px;
+    max-width: 700px;
     overflow: hidden;
 }
 
@@ -175,7 +285,7 @@ header{
 }
 
 #collection_block .content_collection .women_collection{
-    max-width: 350px;
+    max-width: 700px;
     overflow: hidden;
 }
 #collection_block .content_collection .women_collection a:hover img{
@@ -309,4 +419,3 @@ footer{
 .social_contact span{
     margin-left: 1cm;
 }
-

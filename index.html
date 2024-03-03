@@ -6,29 +6,38 @@
         <link rel="stylesheet" href="index.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="index.js/">
-        <
     </head>
     <body>
         <header>
-            Clothing
+            <span id="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+            <span id="logo">ER Space</span>
+            <div class="hamburger">
+               
+                <span id="bar"><i class="fa-solid fa-bars"></i></span>
+            </div>
         </header>
-        <div class="login_bar">
-            <ul type="none">
-               <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Tìm kiếm">
-               <a href=""><i class="fa-solid fa-user"></i> Đăng nhập/Đăng ký</a>
-            </ul>
-        </div>
-        
         <nav>
          <div class="home_bar" >
+            <div id="close_menu">X</div>
           <ul type ="none">
+            <span><img src="/clothing_web/imagine/logo.png" width="70px"></span> 
             <li><a href="">Home</a></li>
-            <li><a href="">Men</a></li>
+            <li>
+                <a href="">Men</a>
+                <ul class="men_menu" type="none">
+                    <li><a href="">T-shirt</a></li>
+                    <li><a href="">Somi</a></li>
+                    <li><a href="">Flannel</a></li>
+                    <li><a href="">Vest/Blazer</a></li>
+                    <li><a href="">Quần</a></li>
+                </ul>
+            </li>
             <li><a href="">Women</a></li>
             <li><a href="">About us</a></li>
             <li><a href="">Contact</a></li>
+            <li id="login"><a href="">Login / Sign up</a></li>
           </ul>
-         </div>
+        </div>
         </nav>
 
         <div class="intro_space">
@@ -69,13 +78,13 @@
          <div class="content_collection">
           <div class="men_collection">
             <a href="">
-             <img src="imagine\men_clothing.png" width="350px">
+             <img src="imagine\men_clothing.png" width="700px">
             </a>
             <span class="text_collection_men">MEN COLLECTION</span>
           </div>
           <div class="women_collection">
             <a href ="">
-                <img src ="imagine\women_clothing.png" width="350px">
+                <img src ="imagine\women_clothing.png" width="700px">
             </a>
             <span class="text_collection_women">WOMEN COLLECTION</span>
           </div>
@@ -146,5 +155,6 @@
             </div>
         </footer>
         <script src="intro_space.js"></script>
+        <script src="home_bar.js"></script>
     </body>
 </html>
