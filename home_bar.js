@@ -7,5 +7,5 @@ HamMenu.addEventListener('click', () => {
 });
 
 CloseMenu.addEventListener('click', () =>{
-     navEl.classList.toggle("home_bar--open");
+     navEl.classList.remove("home_bar--open");
 })

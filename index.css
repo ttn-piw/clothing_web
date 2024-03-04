@@ -29,6 +29,7 @@ header{
     margin: 5px 0px;
 }
 .home_bar{
+    position: relative;
     background-color: #242526;
     padding: 15px 15px;
     margin-top: 0.3cm;
@@ -56,11 +57,13 @@ header{
     transition: 0.3s ease-in;
 
 }
-.home_bar .men_menu{
+.home_bar .men_menu,
+.home_bar .women_menu,
+.home_bar li #about_content{
     /* background-color: aqua; */
     background-color: #242526;
     display: block;
-    top: 100px;
+    top: 90px;
     padding-left: 10px;
     width: 140px;
     position: absolute;
@@ -71,18 +74,40 @@ header{
     opacity: 0;
     visibility: hidden;
 }
-.home_bar li:hover .men_menu{
+.home_bar li:hover .men_menu,
+.home_bar li:hover .women_menu{
     opacity: 1;
     visibility: visible;
     transition: 0.5s;
 }
-.men_menu li:hover a{
+.home_bar li:hover #about_content{
+    background-color:#f5f5f5;
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    width: 70%;
+    top:120px;
+    left: 20%;
+    height: 200px;
+}
+.home_bar li #about_content img{
+    max-width: max-content;
+    height: 200px;
+    float: right;
+}
+.home_bar li #about_content p{
+    padding-top: 5px;
+    line-height: 20px;
+}
+.men_menu li:hover a,
+.women_menu li:hover a{
     background-color: white;
     color: #000000;
     padding: 0.2cm;
     border-radius: 5px;
     transition: 0.5s ease-in;
 }
+
 @media screen and (max-width: 768px) {
     .home_bar .men_menu{
         top:100px;
@@ -148,13 +173,15 @@ header{
         align-items: center;
         line-height: 90px;
     }
-    .home_bar ul li {
+    .home_bar > ul > li {
         color: #000000;
-        text-decoration: none
+        text-decoration: none;
+
     }
-    .home_bar li:hover .men_menu{
+    .home_bar li:hover .men_menu , 
+    .home_bar li:hover .women_menu{
         opacity: 1;
-        visibility: hidden;
+        visibility: hidden; 
     }
     
 }
