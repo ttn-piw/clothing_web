@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="index.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="index.js/">
+        <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </head>
     <body>
         <header>
@@ -20,7 +21,7 @@
          <div class="home_bar" >
             <div id="close_menu">X</div>
           <ul type ="none">
-            <span><img src="/clothing_web/imagine/logo.png" width="70px"></span> 
+            <span><img src="/imagine/logo.png" width="70px"></span> 
             <li><a href="">Home</a></li>
             <li>
                 <a href="">Men</a>
@@ -44,7 +45,7 @@
             <li>
                 <a href="">About us</a>
                 <span id="about_content">
-                    <img src="/clothing_web/imagine/logo.png">
+                    <img src="/imagine/logo.png">
                     <p>
                         Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
                         Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
@@ -72,16 +73,16 @@
          </div>
          <div class="slide_show">
             <div class="item">
-                <img src="/clothing_web/imagine/Intro1.png" alt="Picture_intro1">
+                <img src="imagine\Intro1.png" alt="Picture_intro1">
             </div>
             <div class="item">
                 <img src="imagine\Beige Brown Minimalist Casual Style Banner Landscape.png" alt="Picture_intro1">
             </div>
             <div class="item">
-                <img src="/clothing_web/imagine/Summer_collection.png" alt="Picture_intro1">
+                <img src="imagine/Summer_collection.png" alt="Picture_intro1">
             </div>
             <div class="item">
-                <img src="/clothing_web/imagine/Intro3.png" alt="Picture_intro1">
+                <img src="/imagine/Intro3.png " alt="Picture_intro1">
             </div>
          </div> 
 
@@ -119,28 +120,49 @@
 
         <div class="best_seller_block">
          <div id="title_bs"><a href="">BEST SELLER</a></div>
-         <ul id="list_product" >
+           
+            
+            <ul class="list_product" >
+            <div class="item">
+                <div class="img"><img src="/imagine/Suits.jpg"></div>
+                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
+                <div class="item_name">Blazer</div>
+                <div class="price">599.000 VND</div>
+             </div>
              <div class="item">
-                <img src="/clothing_web/imagine/Suits.jpg">
+                <div class="img"><img src="/imagine/product1.jpg"></div>
+                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
+                <div class="item_name">Blazer</div>
+                <div class="price">599.000 VND</div>
+             </div>
+             <div class="item">
+                <div class="img"><img src="imagine/Áo Sơ Mi Nam  Tay Lỡ Form Rộng Phối Màu Chất Lụa Hàn Mềm Mại Thoáng Mát Thấm Hút Mồ Hôi.jpg"></div>
+                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
+                <div class="item_name">Blazer</div>
+                <div class="price">799.000 VND</div>
+             </div>
+             <div class="item">
+                <div class="img"><img src="imagine/Suits.jpg"></div>
+                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                 <div class="item_name">Suits</div>
                 <div class="price">799.000 VND</div>
              </div>
-            
              <div class="item">
-                <img src="product2.jpg">
+                <div class="img"><img src="/imagine/ZIWOCH Men's Sports Suit Jacket Two Button Business Casual Blazer Wedding Jackets.jpg"></div>
+                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                 <div class="item_name">Blazer</div>
                 <div class="price">799.000 VND</div>
              </div>
-             
              <div class="item">
-                <img src="product1.jpg">
+                <div class="img"><img src="/imagine/product1.jpg"></div>
+                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                 <div class="item_name">Blazer</div>
                 <div class="price">799.000 VND</div>
              </div>
-            
          </ul>
-        </div>
-        
+         <i id="bs_left" class="fa-solid fa-angle-left"></i>
+         <i id="bs_right" class="fa-solid fa-angle-right"></i>
+        </div>        
         <footer>
              <div class="policy">
               <ul type="none">
@@ -182,5 +204,7 @@
         </footer>
         <script src="intro_space.js"></script>
         <script src="home_bar.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="best_seller.js"></script>
     </body>
 </html>
