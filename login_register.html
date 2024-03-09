@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset ="UTF-8">
+        <title>Login/Register's Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="login_register.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="signin_signup">
+                <form action="" class="sign-in-form">
+                    <div class="box form-box">
+                        <div>
+                            <span class="title">Login</span>
+                            <span id="logo"><img src="/imagine/logo.png" alt=""></span>
+                        </div>
+                            <div class="text_input">
+                                <label for="username"><i class="fa-solid fa-user"></i>
+                                    <input type="text" name="username" id="username" placeholder="Username" required>
+                                </label>
+                            </div>
+                            <div class="text_input">
+                                <label for="password"><i class="fa-solid fa-lock"></i>
+                                    <input type="text" name="password" id="password" placeholder="Password" required>
+                                </label>
+                            </div>
+                                <input type="submit" name="submit" id="button_signin" value="Đăng nhập">
+                            <div>
+                                Đăng ký tài khoản ở đây nhé! <a href="">Đăng ký</a>
+                            </div>
+                    </div>
+                </form>
+                <form action="" class="sign-up-form">
+                    <div class="box form-box">
+                        <div>
+                            <span class="title">Sign up</span>
+                            <span id="logo"><img src="/imagine/logo.png" alt=""></span>
+                        </div>
+                            <div class="text_input">
+                                <label for="username"><i class="fa-solid fa-envelope"></i>
+                                    <input type="text" name="username" id="username" placeholder="Username" required>
+                                </label>
+                            </div>
+                            <div class="text_input">
+                                <label for="username"><i class="fa-solid fa-user"></i>
+                                    <input type="text"  placeholder="Email" required>
+                                </label>
+                            </div>
+                            <div class="text_input">
+                                <label for="password"><i class="fa-solid fa-lock"></i>
+                                    <input type="text" name="password" id="password" placeholder="Password" required>
+                                </label>
+                            </div>
+                                <input type="submit" id="button_signup" value="Đăng ký">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

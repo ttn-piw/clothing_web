@@ -335,33 +335,27 @@ header{
 #collection_block .content_collection .women_collection a:hover img{
     transform: scale(1.1);
 }
-
-/*-------------BEST SELLER------------*/
-.best_seller_block{ 
+/*-------------NEW ARRIVAL---------------------------*/
+.new_arrival_block{ 
     position: relative;
-    margin-top: 50px;
+    margin-top: 100px;
+    margin-bottom: 150px;
     max-width: 1600px;
-    width: 100%;
+    width: 90%;
 }
 
-.best_seller_block #title_bs{
+.new_arrival_block #title_na{
     text-align: center;
-    font-size: 25px;
+    font-size: 45px;
     margin-bottom: 0.5cm;
+    opacity: 0.7;
 }
 
-.best_seller_block #title_bs a{
+.new_arrival_block #title_na a{
     color:#000000;
 }
-
-.best_seller_block .product_bs ul{
-    display: flex;
-}
-.best_seller_block .product_bs ul li{
-    width: 10px;
-}
 /* Button */
-.best_seller_block i{
+.new_arrival_block i{
     color:#000000;
     position: absolute;
     width: 50px;
@@ -375,13 +369,13 @@ header{
     transform: translate(-50%);
     opacity: 0.5;
 }
-#bs_left{
-   left: -20px;
+.new_arrival_block #na_left{
+   left: 22px;
 }
-.best_seller_block > i:last-child{
+.new_arrival_block > i:last-child{
     right: -70px;
 }
-.best_seller_block .list_product{
+.new_arrival_block .list_product{
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: calc((100% / 3) - 70px);
@@ -392,12 +386,12 @@ header{
     scrollbar-width: 0;
 }
 
-.best_seller_block .list_product :where(.item, .img){
+.new_arrival_block .list_product :where(.item, .img){
     display: flex;
     align-items: center;
     justify-items: center;
 }
-.best_seller_block .list_product .item{
+.new_arrival_block .list_product .item{
     width: 350px;
     list-style: none;
     border-radius:8px ;
@@ -407,22 +401,22 @@ header{
     justify-items: center;
     flex-direction: column;
 }
-.best_seller_block .list_product .item div{
+.new_arrival_block .list_product .item div{
     text-align: center;
 }
-.best_seller_block .list_product .item .img{
+.new_arrival_block .list_product .item .img{
     width: 350px;
     height: 390px;
 }
 
-.best_seller_block .list_product .item .img img{
+.new_arrival_block .list_product .item .img img{
     width:200px;
     border-radius: 15px;
     height: 80%;
     object-fit: cover;
     overflow: hidden;
 } 
-.best_seller_block .item .BtnBuy{
+.new_arrival_block .item .BtnBuy{
     background-color: #ececec;
     color: #000000;
     outline: none;
@@ -447,9 +441,172 @@ header{
 }
 }
 
+
+/*-------------BEST SELLER------------*/
+.container_block{ 
+    position: relative;
+    margin-top: 50px;
+    max-width: 1600px;
+    width: 90%;
+}
+
+.container_block #title_bs{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 0.5cm;
+    opacity: 0.7;
+}
+
+.container_block #title_bs a{
+    color:#000000;
+}
+/* Button */
+.container_block i{
+    color:#000000;
+    position: absolute;
+    width: 50px;
+    background-color:#ececec;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 21px;
+    top:50%;
+    cursor: pointer;
+    transform: translate(-50%);
+    opacity: 0.5;
+}
+#bs_left{
+   left: 22px;
+}
+.container_block > i:last-child{
+    right: -70px;
+}
+.container_block .list_product{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 70px);
+    gap:0px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.container_block .list_product :where(.item, .img){
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.container_block .list_product .item{
+    width: 350px;
+    list-style: none;
+    border-radius:8px ;
+    display: block;
+    margin: 0 50px;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+.container_block .list_product .item div{
+    text-align: center;
+}
+.container_block .list_product .item .img{
+    width: 350px;
+    height: 390px;
+}
+
+.container_block .list_product .item .img img{
+    width:200px;
+    border-radius: 15px;
+    height: 80%;
+    object-fit: cover;
+    overflow: hidden;
+} 
+.container_block .item .BtnBuy{
+    background-color: #ececec;
+    color: #000000;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.5s;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.8 ;
+    display: none;
+}
+.item:hover .BtnBuy{
+    display: block;
+}
+@media screen and (max-width: 900px) {
+    .best_seller_block .list_product{
+        grid-auto-columns: calc((100% / 2) - 12px);
+    }
+}
+@media screen and (max-width: 600px) {
+    .best_seller_block .list_product{
+        grid-auto-columns: 100%;
+}
+}
+
+/* TIN TỨC THỜI TRANG */
+.news_container{
+    max-width: 1600px;
+    width: 95%;
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+.news_container .title_news{
+    display: inline-block;
+    text-align:left;
+    font-size: 30px;
+    opacity: 0.7;
+}
+.news_container .content_news{
+    margin-top: 50px;
+    display: flex;
+    max-width: 1600px ;
+}
+.news_container .content_news li{
+    max-width: 350px;
+}
+.news_container .content_news li a img{
+    width: 100%;
+    height: 250px;
+}
+.news_container .content_news li h3{
+    margin-top: 15px;
+}
+.news_container .content_news li h3 a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+}
+@media screen and (max-width: 900px) {
+    .news_container .content_news li:nth-child(3){
+        display: none;
+        justify-content: space-between;
+    }
+    .news_container .content_news li a img{
+        width: 95%;
+        height: 230px;
+    } 
+}
+@media screen and (max-width: 600px) {
+    .news_container .content_news li{
+        display: none;
+    }
+    .news_container .content_news li:first-child{
+        display: block;
+        width: 60%;
+        justify-content: center;
+    }
+    .news_container .content_news li a img{
+        width: 95%;
+        height: 230px;
+    } 
+}
 footer{
     background-color: #000000;
-    margin-top: 5cm;
+    margin-top: 100px;
 }
 .policy{
     box-sizing: border-box;
