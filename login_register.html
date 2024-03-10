@@ -11,10 +11,10 @@
             <div class="signin_signup">
                 <form action="" class="sign-in-form">
                     <div class="box form-box">
-                        <div>
+                        <span>
                             <span class="title">Login</span>
                             <span id="logo"><img src="/imagine/logo.png" alt=""></span>
-                        </div>
+                        </span>
                             <div class="text_input">
                                 <label for="username"><i class="fa-solid fa-user"></i>
                                     <input type="text" name="username" id="username" placeholder="Username" required>
@@ -25,7 +25,7 @@
                                     <input type="text" name="password" id="password" placeholder="Password" required>
                                 </label>
                             </div>
-                                <input type="submit" name="submit" id="button_signin" value="Đăng nhập">
+                                <input type="submit" name="submit" class="btn" id="button_signin" value="Đăng nhập">
                             <div>
                                 Đăng ký tài khoản ở đây nhé! <a href="">Đăng ký</a>
                             </div>
@@ -38,12 +38,12 @@
                             <span id="logo"><img src="/imagine/logo.png" alt=""></span>
                         </div>
                             <div class="text_input">
-                                <label for="username"><i class="fa-solid fa-envelope"></i>
+                                <label for="username"><i class="fa-solid fa-user"></i>
                                     <input type="text" name="username" id="username" placeholder="Username" required>
                                 </label>
                             </div>
                             <div class="text_input">
-                                <label for="username"><i class="fa-solid fa-user"></i>
+                                <label for="username"><i class="fa-solid fa-envelope"></i>
                                     <input type="text"  placeholder="Email" required>
                                 </label>
                             </div>
@@ -52,10 +52,28 @@
                                     <input type="text" name="password" id="password" placeholder="Password" required>
                                 </label>
                             </div>
-                                <input type="submit" id="button_signup" value="Đăng ký">
+                                <input type="submit" class="btn" id="button_signup" value="Đăng ký">
                     </div>
+                    <img src="/imagine/Beige Brown Minimalist Casual Style Banner Landscape.png" alt="">
                 </form>
             </div>
+            <div class="panels_container">
+                <div class="panel left_panel">
+                    <div class="content">
+                        <h3>Chào mừng quay lại</h3>
+                        <button class="btn" id="sign_in_pannel">Sign in</button>
+                    </div>
+                    <img src="" alt="" class="image_panel">
+                </div>
+                <div class="panel right_panel">
+                    <div class="content">
+                        <h3>Chào mừng bạn đến với chúng tôi</h3>
+                        <button class="btn" id="sign_up_pannel">Sign in</button>
+                    </div>
+                    <img src="" alt="" class="image_panel">
+                </div>
+            </div>
         </div>
+        <script src="login.js"></script>
     </body>
 </html>
