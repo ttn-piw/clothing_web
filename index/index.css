@@ -580,6 +580,12 @@ header{
     color: #000000;
     font-weight: 500;
 }
+.news_container .content_news li a img:hover{
+    transform: scale(1.1);
+}
+.news_container .content_news li a:hover{
+    color:saddlebrown;
+}
 @media screen and (max-width: 900px) {
     .news_container .content_news li:nth-child(3){
         display: none;
