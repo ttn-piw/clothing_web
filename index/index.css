@@ -39,9 +39,9 @@ header{
 .home_bar ul{
     display: flex;
 }
-.home_bar #close_menu{
+/* .home_bar #close_menu{
     display: none;
-}
+} */
 .home_bar > ul > li a{
     text-decoration: none;
     color:#fff;
