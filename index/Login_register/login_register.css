@@ -87,6 +87,7 @@ body{
     align-items: center;
     padding-left: 10px;
     line-height: 5px;
+    z-index: 7;
     /* transition: 1s ease-in-out; */
 }
 .text_input label {
@@ -94,10 +95,13 @@ body{
 }
 .text_input input{
     font-size: 15px;
+    width: 200px;
+    height: 20px;
     flex: 5;
     background: none;
     border: none;
     outline: none;
+    /* background-color: #003366; */
 }
 #DKTK{
     margin-top: 20px;
@@ -127,7 +131,7 @@ form img{
     z-index: 6;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     width: 100%;
     min-width: 230px;
@@ -147,7 +151,7 @@ form img{
 
 .left_panel .image_panel,
 .left_panel .content{
-    transform: translateX(-600%);
+    transform: translateX(-800%);
     transition: 1s ease-in-out;
 }
 .right_panel .image_panel,
@@ -163,7 +167,7 @@ form img{
     transform: translateX(200%);
 }
 .container.sign_up_mode .left_panel .content{
-    transform: translateX(-100%);
+    transform: translateX(-200%);
 }
 
 
