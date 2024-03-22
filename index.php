@@ -1,10 +1,13 @@
+<?php
+    include("php/config.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home's Page</title>  
-        <link rel="stylesheet" href="/index/index.css"> 
+        <link rel="stylesheet" href="index/index.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -101,8 +104,27 @@
         <div class="new_arrival_block">
             <div id="title_na"><a href="">NEW ARRIVAL</a></div>
                <ul class="list_product" >
-               <div class="item">
-                   <div class="img"><img src="/imagine/Suits.jpg"></div>
+               <?php
+                $sql = "SELECT * FROM product WHERE PTagSpace ='NA'";
+                $result = $connect->query($sql);
+                // Loop through each product and display them
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                        <div class="item">
+                            <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                            <div class="BtnBuy">Thêm vào giỏ hàng</div>
+                            <div class="item_name"><?php echo $row['PName']; ?></div>
+                            <div class="price"><?php echo $row['PPrice']; ?> VND</div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "No products available";
+                }
+                ?>
+               <!-- <div class="item">
+                   <div class="img"><img src="imagine/Suits.jpg"></div>
                    <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                    <div class="item_name">Suits nam</div>
                    <div class="price">899.000 VND</div>
@@ -136,7 +158,8 @@
                    <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                    <div class="item_name">Áo croptop</div>
                    <div class="price">299.000 VND</div>
-                </div>
+                </div> -->
+
             </ul>
             <i id="na_left" class="fa-solid fa-angle-left"></i>
             <i id="na_right" class="fa-solid fa-angle-right"></i>
@@ -262,9 +285,12 @@
                 </span> 
             </div>
         </footer>
-        <script src="/index/intro_space.js"></script>
-        <script src="/index/home_bar_index.js"></script>
-        <script src="/index/best_seller.js"></script>
-        <script src="/index/new_arrival.js"></script>
+        <script src="index/intro_space.js"></script>
+        <script src="index/home_bar_index.js"></script>
+        <script src="index/best_seller.js"></script>
+        <script src="index/new_arrival.js"></script>
     </body>
+    <?php
+        $conn->close();
+    ?>
 </html>
