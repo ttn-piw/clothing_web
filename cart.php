@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cart's Page</title>  
-        <link rel="stylesheet" href="index/Cart/cart.css">
+        <link rel="stylesheet" href="index/Cart/cart.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -130,11 +130,28 @@
                         <h3>Ghi chú</h3>
                         <input type="text" placeholder="Bạn muốn mô tả rõ hơn về đơn hàng...">
                     </div>
+                    <div class="shipping_detail">
+                        <h2>Thông tin giao hàng</h2>
+                            <div class="text_input">
+                                <label for="Name"><i class="fa-solid fa-user"></i>
+                                    <input type="text" name="cus_name" id="cus_name" placeholder="Họ và tên" required>
+                                </label>
+                            </div>
+                            <div class="text_input">
+                                <label for="email"><i class="fa-solid fa-envelope"></i>
+                                    <input type="text" name="email" id="email" placeholder="Email" required>
+                                </label>
+                           </div>
+                            <div class="text_input">
+                                <label for="address"><i class="fa-solid fa-lock"></i>
+                                    <input type="text" name="address" id="address" placeholder="Địa chỉ giao hàng:" required>
+                                </label>
+                            </div>
+                    </div>
                     <button id="get_bill">THANH TOÁN</button>
                 </div>
             </div>
         </div>
-
         <footer id="footer_page">
             <div class="policy">
              <ul type="none">
