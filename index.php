@@ -1,5 +1,6 @@
 <?php
     include("php/config.php");
+    session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,10 @@
     </head>
     <body>
         <header>
-            <span id="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+            <span id="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href ="cart.php">Giỏ hàng</a>
+            </span>
             <span id="logo">ER Space</span>
             <div class="hamburger">
         
@@ -63,7 +67,15 @@
                 </span> 
             </li>
             <li id="contact_home"><a href="">Contact</a></li>
-            <li id="login"><a href="/index/Login_register/login_register.html">Login / Sign up</a></li>
+            <?php 
+                if (isset($_SESSION['valid'])) {
+                    echo '<li id=login><a href="#">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                    echo "<li><a href='php/logout.php'>Log out</a></li>";
+                } else {
+                    echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                }
+            ?>
+            <!-- <li id="login"><a href="/index/Login_register/login_register.html">Login / Sign up</a></li> -->
           </ul>
         </div>
         </nav>

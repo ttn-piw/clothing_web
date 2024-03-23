@@ -1,10 +1,14 @@
+<?php
+    include('php/config.php');
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cart's Page</title>  
-        <link rel="stylesheet" href="/index/Cart/cart.css">
+        <link rel="stylesheet" href="index/Cart/cart.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -60,7 +64,14 @@
                 </span> 
             </li>
             <li id="contact_home"><a href="">Contact</a></li>
-            <li id="login"><a href="/index/Login_register/login_register.html">Login / Sign up</a></li>
+            <?php 
+                if (isset($_SESSION['valid'])) {
+                    echo '<li id=login><a href="#">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                    echo "<li><a href='php/logout.php'>Log out</a></li>";
+                } else {
+                    echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                }
+            ?>
           </ul>
         </div>
         </nav>
