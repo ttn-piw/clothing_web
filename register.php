@@ -27,9 +27,8 @@
                     }
                     else {
                         mysqli_query($connect,"INSERT INTO users (Username,Email,Password)
-                                                VALUES('$username','$email','$password') ")
-                        or die("Lỗi xảy ra");
-
+                                                VALUES('$username','$email','$password') ") or die("Lỗi xảy ra");
+                                                
                         echo "<div class='message'>
                             <p> Đăng ký thành công!</p>
                         </div> <br>";

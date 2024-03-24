@@ -30,7 +30,7 @@
             <span><img src="/imagine/logo.png" width="70px"></span> 
             <li><a href="index.html">Home</a></li>
             <li>
-                <a href="product_page_men.html">Men</a>
+                <a href="product_page_men.php">Men</a>
                 <ul class="men_menu" type="none">
                     <li id="men_tee"><a href="">T-shirt</a></li>
                     <li><a href="">Somi</a></li>
@@ -69,7 +69,7 @@
             <li id="contact_home"><a href="">Contact</a></li>
             <?php 
                 if (isset($_SESSION['valid'])) {
-                    echo '<li id=login><a href="#">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                    echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
                     echo "<li><a href='php/logout.php'>Log out</a></li>";
                 } else {
                     echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';

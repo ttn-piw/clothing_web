@@ -92,3 +92,13 @@ body{
         padding-left: 10px;
     }
 }   
+
+/* CUSTOMER_DETAIL */
+form h1{
+    margin-bottom: 30px;
+    font-size: 35px;
+    color: brown;
+}
+form h2{
+    font-size: 27px;
+}

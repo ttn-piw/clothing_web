@@ -1,9 +1,13 @@
+<?php
+    include("php/config.php");
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Men's collection</title>
-        <link rel="stylesheet" href="/index/product_page/product_men.css">
+        <link rel="stylesheet" href="index/product_page/product_men.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -58,7 +62,14 @@
                    </span> 
                </li>
                <li id="contact_home"><a href="">Contact</a></li>
-               <li id="login"><a href="/index/Login_register/login_register.html">Login / Sign up</a></li>
+                <?php 
+                    if (isset($_SESSION['valid'])) {
+                        echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                        echo "<li><a href='php/logout.php'>Log out</a></li>";
+                    } else {
+                        echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                    }
+                ?>
              </ul>
            </div>
            </nav>
@@ -84,9 +95,28 @@
                 <div class="tee_space">
                     <div class="title_head">T-SHIRT</div>
                     <div class="grid_container">
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/aothun.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 3";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
+                            <div class="img"><img src="imagine/Product_img/Men_img/aothun.jpg"></div>
+                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
                             <div class="item_name">Áo thun nam</div>
                             <div class="price">309.000 VND</div>
                         </div>
@@ -119,7 +149,7 @@
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Áo thun nam</div>
                             <div class="price">309.000 VND</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <hr>
