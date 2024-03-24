@@ -1,9 +1,13 @@
+<?php 
+    include("php/config.php");
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Women's collection</title>
-        <link rel="stylesheet" href="/index/product_page/product_women.css">
+        <link rel="stylesheet" href="index/product_page/product_women.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -19,10 +23,10 @@
             <div class="home_bar" >
                <div id="close_menu">X</div>
              <ul type ="none">
-               <span><img src="/imagine/logo.png" width="70px"></span> 
-               <li><a href="index.html">Home</a></li>
+               <span><img src="imagine/logo.png" width="70px"></span> 
+               <li><a href="index.php">Home</a></li>
                <li>
-                   <a href="product_page_men.html">Men</a>
+                   <a href="product_page_men.php">Men</a>
                    <ul class="men_menu" type="none">
                        <li><a href="">T-shirt</a></li>
                        <li><a href="">Somi</a></li>
@@ -31,7 +35,7 @@
                    </ul>
                </li>
                <li>
-                   <a href="product_page_women.html">Women</a>
+                   <a href="product_page_women.php">Women</a>
                    <ul class="women_menu" type="none">
                        <li><a href="">Áo</a></li>
                        <li><a href="">Vest/Blazer</a></li>
@@ -42,7 +46,7 @@
                <li>
                    <a href="">About us</a>
                    <span id="about_content">
-                       <img src="/imagine/logo.png">
+                       <img src="imagine/logo.png">
                        <p>
                            Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
                            Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
@@ -59,7 +63,14 @@
                    </span> 
                </li>
                <li id="contact_home"><a href="">Contact</a></li>
-               <li id="login"><a href="/index/Login_register/login_register.html">Login / Sign up</a></li>
+                <?php 
+                    if (isset($_SESSION['valid'])) {
+                        echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                        echo "<li><a href='php/logout.php'>Log out</a></li>";
+                    } else {
+                        echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                    }
+                ?>
              </ul>
            </div>
            </nav>
@@ -85,7 +96,26 @@
                 <div class="tee_space">
                     <div class="title_head">ÁO NỮ</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 7";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/ao1.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Croptop hồng</div>
@@ -114,7 +144,7 @@
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Sơ mi xanh nữ</div>
                             <div class="price">299.000 VND</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -122,7 +152,26 @@
                 <div class="vest_space">
                     <div class="title_head">VEST/BLAZER</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 8";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/blazer1.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Sơ mi xanh navy nam</div>
@@ -140,14 +189,33 @@
                             <div class="item_name">Sơ mi Oxford nam</div>
                             <div class="price">399.000 VND</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <hr>
                 <!-- VEST/BLAZER ----------------------->
                 <div class="dress_space">
                     <div class="title_head">CHÂN VÁY</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 9";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/chanvay.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Chân váy jeans</div>
@@ -170,7 +238,7 @@
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Chân váy trắng</div>
                             <div class="price">299.000 VND</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -178,7 +246,26 @@
                 <div class="pant_space">
                     <div class="title_head">QUẦN</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 10";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/quan1.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Quần tây lưng thun</div>
@@ -201,7 +288,7 @@
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Quần tây ống đứng đen</div>
                             <div class="price">409.000 VND</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -246,7 +333,7 @@
                </span> 
            </div>
        </footer>
-        <script src="/index/product_page/homebar.js"></script>
-        <script src="/index/product_page/submenu.js"></script>
+        <script src="index/product_page/homebar.js"></script>
+        <script src="index/product_page/submenu.js"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-<?php
+<?php 
     include("php/config.php");
     session_start();
 ?>
@@ -6,8 +6,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Men's collection</title>
-        <link rel="stylesheet" href="index/product_page/product_men.css">
+        <title>Women's collection</title>
+        <link rel="stylesheet" href="index/product_page/product_women.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -18,23 +18,24 @@
         
                 <span id="bar"><i class="fa-solid fa-bars"></i></span>
             </div>
-        </header> <nav>
+        </header> 
+        <nav>
             <div class="home_bar" >
                <div id="close_menu">X</div>
              <ul type ="none">
-               <span><img src="/imagine/logo.png" width="70px"></span> 
-               <li><a href="index.html">Home</a></li>
+               <span><img src="imagine/logo.png" width="70px"></span> 
+               <li><a href="index.php">Home</a></li>
                <li>
-                    <a href="">Men</a>
-                    <ul class="men_menu" type="none">
-                        <li><a href="">T-shirt</a></li>
-                        <li><a href="">Sơ mi</a></li>
-                        <li><a href="">Vest/Blazer</a></li>
-                        <li><a href="">Quần</a></li>
-                    </ul>
-                </li>
+                   <a href="product_page_men.php">Men</a>
+                   <ul class="men_menu" type="none">
+                       <li><a href="">T-shirt</a></li>
+                       <li><a href="">Somi</a></li>
+                       <li><a href="">Vest/Blazer</a></li>
+                       <li><a href="">Quần</a></li>
+                   </ul>
+               </li>
                <li>
-                   <a href="product_page_women.html">Women</a>
+                   <a href="product_page_women.php">Women</a>
                    <ul class="women_menu" type="none">
                        <li><a href="">Áo</a></li>
                        <li><a href="">Vest/Blazer</a></li>
@@ -45,7 +46,7 @@
                <li>
                    <a href="">About us</a>
                    <span id="about_content">
-                       <img src="/imagine/logo.png">
+                       <img src="imagine/logo.png">
                        <p>
                            Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
                            Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
@@ -157,7 +158,26 @@
                 <div class="somi_space">
                     <div class="title_head">SOMI</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 4";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Men_img/somi1.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Sơ mi xanh navy nam</div>
@@ -181,14 +201,33 @@
                             <div class="item_name">Sơ mi nam tay lỡ</div>
                             <div class="price">309.000 VND</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <hr>
                 <!-- VEST/BLAZER ----------------------->
                 <div class="vest_space">
                     <div class="title_head">VEST/BLAZER NAM</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 5";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Men_img/blazer1.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Blazer nam nâu kem</div>
@@ -211,7 +250,7 @@
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Blazer nâu nam</div>
                             <div class="price">630.000 VND</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -219,7 +258,26 @@
                 <div class="pant_space">
                     <div class="title_head">QUẦN NAM</div>
                     <div class="grid_container">
-                        <div class="item">
+                    <?php
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 6";
+                        $result = $connect->query($sql);
+                        // Loop through each product and display them
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="item">
+                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
+                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="item_name"><?php echo $row['PName']; ?></div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No products available";
+                        }
+                    ?>
+                        <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Men_img/quan1.jpg"></div>
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Blazer nam nâu kem</div>
@@ -236,7 +294,7 @@
                             <div class ="BtnBuy">Thêm vào giỏ hàng</div>
                             <div class="item_name">Blazer phong cách</div>
                             <div class="price">699.000 VND</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -281,7 +339,7 @@
                </span> 
            </div>
        </footer>
-        <script src="/index/product_page/homebar.js"></script>
+        <script src="index/product_page/homebar.js"></script>
         <!-- <script src="/index/ScrollIntoView.js"></script> -->
     </body>
 </html>

@@ -300,17 +300,18 @@ header{
 }
 .item .BtnBuy{
     visibility: hidden;
+    width: 90%;
 }
 .item:hover .BtnBuy{
+    cursor: pointer;
     visibility: visible;
-    background-color: #ececec;
     color: #000000;
-    outline: none;
-    border-radius: 5px;
+    outline: #ececec;
+    border-radius: 10px;
     transition: 0.5s;
     font-size: 20px;
     font-weight: 500;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 .item .item_name{
     font-size: 23px;

@@ -27,8 +27,8 @@
          <div class="home_bar" >
             <div id="close_menu">X</div>
           <ul type ="none">
-            <span><img src="/imagine/logo.png" width="70px"></span> 
-            <li><a href="index.html">Home</a></li>
+            <span><img src="imagine/logo.png" width="70px"></span> 
+            <li><a href="index.php">Home</a></li>
             <li>
                 <a href="product_page_men.php">Men</a>
                 <ul class="men_menu" type="none">
@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li>
-                <a href="product_page_women.html">Women</a>
+                <a href="product_page_women.php">Women</a>
                 <ul class="women_menu" type="none">
                     <li><a href="">Áo</a></li>
                     <li><a href="">Vest/Blazer</a></li>
@@ -50,7 +50,7 @@
             <li>
                 <a href="#">About us</a>
                 <span id="about_content">
-                    <img src="/imagine/logo.png">
+                    <img src="imagine/logo.png">
                     <p>
                         Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
                         Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
@@ -86,16 +86,16 @@
          </div>
          <div class="slide_show">
             <div class="item">
-                <img src="imagine\Intro1.png" alt="Picture_intro1">
+                <img src="imagine/Intro1.png" alt="Picture_intro1">
             </div>
             <div class="item">
-                <img src="imagine\Beige Brown Minimalist Casual Style Banner Landscape.png" alt="Picture_intro1">
+                <img src="imagine/Beige Brown Minimalist Casual Style Banner Landscape.png" alt="Picture_intro1">
             </div>
             <div class="item">
                 <img src="imagine/Summer_collection.png" alt="Picture_intro1">
             </div>
             <div class="item">
-                <img src="/imagine/Intro3.png " alt="Picture_intro1">
+                <img src="imagine/Intro3.png " alt="Picture_intro1">
             </div>
          </div> 
 
@@ -304,6 +304,6 @@
         <script src="index/new_arrival.js"></script>
     </body>
     <?php
-        $conn->close();
+        $connect->close();
     ?>
 </html>
