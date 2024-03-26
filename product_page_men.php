@@ -1,24 +1,32 @@
 <?php 
     include("php/config.php");
     session_start();
+    // if (isset($_GET['submit']) && isset($_GET['PID'])) {
+    //     $_SESSION['PID'] = $_GET['PID'];
+    //     header("Location: detail_product.php");
+    //     exit();
+    // }  
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Women's collection</title>
-        <link rel="stylesheet" href="index/product_page/product_women.css">
+        <title>Men's collection</title>
+        <link rel="stylesheet" href="index/product_page/product_men.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
-        <header>
-            <span id="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+    <header>
+            <span id="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href ="cart.php">Giỏ hàng</a>
+            </span>
             <span id="logo">ER Space</span>
             <div class="hamburger">
         
                 <span id="bar"><i class="fa-solid fa-bars"></i></span>
             </div>
-        </header> 
+        </header>
         <nav>
             <div class="home_bar" >
                <div id="close_menu">X</div>
@@ -75,6 +83,7 @@
            </div>
            </nav>
 
+
         <div class="container">
             <h1><u>MEN'S COLLECTION</u></h1>
             <ul class="menu_product" type="disc">Danh mục
@@ -99,21 +108,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 3";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="imagine/Product_img/Men_img/aothun.jpg"></div>
@@ -161,21 +177,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 4";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Men_img/somi1.jpg"></div>
@@ -211,21 +234,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 5";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Men_img/blazer1.jpg"></div>
@@ -261,21 +291,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 6";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Men_img/quan1.jpg"></div>

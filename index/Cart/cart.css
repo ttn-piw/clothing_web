@@ -232,12 +232,14 @@ header{
 .content_left table tr td img{
     width: 125px;
 }
-#back_shop{
+#back_shop a, #get_bill a, #del_shop a{
     margin-top: 50px;
+    text-decoration: none;
+    color:#ececec;
 }
 button{
+    margin-top: 20px;
     background-color: #242526;
-    color: #fff;
     width: 200px;
     border-radius: 50px;
     font-weight: 500;
@@ -245,10 +247,14 @@ button{
     margin-bottom: 20px;
 }
 button:hover{
-    background-color: white;
+    background-color:darkgray;
+    color: black;
     font-weight: 600;
-    color: #000000;
     transition: 0.5s ease-in-out;
+}
+#del_pro{
+    width:50px;
+    color:#ececec;
 }
 .content .content_right{
     /* background-color: bisque; */

@@ -11,14 +11,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
-        <header>
-            <span id="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+     <header>
+            <span id="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href ="cart.php">Giỏ hàng</a>
+            </span>
             <span id="logo">ER Space</span>
             <div class="hamburger">
         
                 <span id="bar"><i class="fa-solid fa-bars"></i></span>
             </div>
-        </header> 
+        </header>
         <nav>
             <div class="home_bar" >
                <div id="close_menu">X</div>
@@ -99,21 +102,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 7";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/ao1.jpg"></div>
@@ -155,21 +165,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 8";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/blazer1.jpg"></div>
@@ -199,21 +216,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 9";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/chanvay.jpg"></div>
@@ -249,21 +273,28 @@
                     <?php
                         $sql = "SELECT * FROM product WHERE CTG_ID = 10";
                         $result = $connect->query($sql);
-                        // Loop through each product and display them
+                            // Loop through each product and display them
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <div class="item">
-                                    <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                                    <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                    <form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
+                                    </form>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
-                                <?php
+                            <?php
                             }
                         } else {
                             echo "No products available";
-                        }
+                        }   
                     ?>
                         <!-- <div class="item">
                             <div class="img"><img src="/imagine/Product_img/Women_img/quan1.jpg"></div>

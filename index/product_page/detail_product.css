@@ -219,8 +219,9 @@ header{
 }
 .content_right{
     flex-direction: column;
-    width: 1000px;
+    width: 900px;
     display: inline-block;
+    margin-top: 22px;
 }
 .content_right h2{
     margin-bottom: 20px;

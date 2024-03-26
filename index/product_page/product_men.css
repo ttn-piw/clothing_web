@@ -285,6 +285,9 @@ header{
     text-align: center;
     overflow: hidden;
 }
+.item .PID{
+    visibility: hidden;
+}
 .item .img img{
     width: 100%;
     height: 350px;

@@ -1,6 +1,47 @@
 <?php
-    include('php/config.php');
+    include("php/config.php");
     session_start();
+    if (!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit();
+    }
+    if (!isset($_SESSION['cus-cart'])) $_SESSION['cus-cart']=[];
+
+    if(isset($_POST['submit'])) {
+       if(isset($_POST['PID'])) {
+           $PID = $_POST['PID'];
+           $SQL = "SELECT * FROM product WHERE PID ='$PID'";
+           $result = $connect->query($SQL);
+
+           if($result->num_rows > 0){
+               while ($row_data = $result->fetch_assoc()){
+                   $pro_image = $row_data['PImage'];
+                   $pro_name = $row_data['PName'];
+                   $pro_price = $row_data['PPrice'];
+                   $pro_size = $row_data['PSize'];
+                   $pro_remain =$row_data['PRemain'];
+                   $product=[$pro_image,$pro_name,$pro_price,$pro_size,$pro_remain];
+                   $_SESSION['cus-cart'][] = $product;
+               }
+           }
+       } else {
+           echo "PID is not set";
+       }
+   } else {
+       echo "Form was not submitted";
+   }
+   
+   function deleteProduct($index) {
+    if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])) {
+        unset($_SESSION['cus-cart'][$index]);
+        // Re-index the array to avoid gaps in indexes
+        $_SESSION['cus-cart'] = array_values($_SESSION['cus-cart']);
+    }
+    }
+
+    if(isset($_POST['del_pro'])){
+        deleteProduct($_POST['del_pro']);
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,9 +66,9 @@
             <div id="close_menu">X</div>
           <ul type ="none">
             <span><img src="/imagine/logo.png" width="70px"></span> 
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li>
-                <a href="product_page_men.html">Men</a>
+                <a href="product_page_men.php">Men</a>
                 <ul class="men_menu" type="none">
                     <li id="men_tee"><a href="">T-shirt</a></li>
                     <li><a href="">Somi</a></li>
@@ -36,7 +77,7 @@
                 </ul>
             </li>
             <li>
-                <a href="product_page_women.html">Women</a>
+                <a href="product_page_women.php">Women</a>
                 <ul class="women_menu" type="none">
                     <li><a href="">Áo</a></li>
                     <li><a href="">Vest/Blazer</a></li>
@@ -47,7 +88,7 @@
             <li>
                 <a href="#">About us</a>
                 <span id="about_content">
-                    <img src="/imagine/logo.png">
+                    <img src="imagine/logo.png">
                     <p>
                         Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
                         Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
@@ -75,7 +116,8 @@
           </ul>
         </div>
         </nav>
-
+        
+      
         <div class="container">
             <div class="content">
                 <div class="content_left">
@@ -88,7 +130,34 @@
                             <th>Thành tiền</th>
                             <th>Xóa</th>
                         </tr>
-                        <tr>
+                       <?php
+                            if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
+                                for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++) { 
+                                    echo '
+                                    <tr>
+                                        <td><img src="'.$_SESSION['cus-cart'][$i][0].'"></td>
+                                        <td><p>'.$_SESSION['cus-cart'][$i][1].' </p></td>
+                                        <td><p>'.$_SESSION['cus-cart'][$i][3].'</p></td>
+                                        <td><select name="" id="">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        </td>
+                                        <td><p>'.number_format($_SESSION['cus-cart'][$i][2],3).'</p><sub>vnd</sub></td>
+                                        <form method="post">
+                                            <td>
+                                                <button type="submit" id="del_pro" name="del_pro" value="'.$i.'">X</button>
+                                            </td>
+                                        </form>
+                                    </tr>';
+                                }
+                            }
+                       ?>
+                        
+                        <!-- <tr>
                             <td><img src="/imagine/Product_img/Men_img/aothun1.jpg" alt=""></td>
                             <td><p>Áo thun trắng mini-logo</p></td>
                             <td><p>L</p></td>
@@ -102,24 +171,9 @@
                         </td>
                             <td><p>309.000</p><sub>vnd</sub></td>
                             <td><span>X</span></td>
-                        </tr>
-                        <tr>
-                            <td><img src="/imagine/Product_img/Men_img/aothun1.jpg" alt=""></td>
-                            <td><p>Áo thun trắng mini-logo</p></td>
-                            <td><p>L</p></td>
-                            <td><select name="" id="">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </td>
-                            <td><p>309.000</p><sub>vnd</sub></td>
-                            <td><span>X</span></td>
-                        </tr>
+                        </tr> -->
                     </table>
-                    <button id="back_shop">TIẾP TỤC MUA SẮM</button>
+                    <button id="back_shop"><a href="product_page_men.php">TIẾP TỤC MUA SẮM</a></button>
                 </div>
                 <div class="content_right">
                     <div class="total">
@@ -148,7 +202,8 @@
                                 </label>
                             </div>
                     </div>
-                    <button id="get_bill">THANH TOÁN</button>
+                    <button type="submit" name="get_bill" id="get_bill"><a href="">THANH TOÁN</a></button>
+                    
                 </div>
             </div>
         </div>
