@@ -1,4 +1,5 @@
 <?php
+    $total_money = 0;
     include("php/config.php");
     session_start();
     if (!isset($_SESSION['username'])) {
@@ -53,8 +54,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
-        <header>
-            <span id="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+    <header>
+            <span id="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href ="cart.php">Giỏ hàng</a>
+            </span>
             <span id="logo">ER Space</span>
             <div class="hamburger">
         
@@ -62,60 +66,60 @@
             </div>
         </header>
         <nav>
-         <div class="home_bar" >
-            <div id="close_menu">X</div>
-          <ul type ="none">
-            <span><img src="/imagine/logo.png" width="70px"></span> 
-            <li><a href="index.php">Home</a></li>
-            <li>
-                <a href="product_page_men.php">Men</a>
-                <ul class="men_menu" type="none">
-                    <li id="men_tee"><a href="">T-shirt</a></li>
-                    <li><a href="">Somi</a></li>
-                    <li><a href="">Vest/Blazer</a></li>
-                    <li><a href="">Quần</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="product_page_women.php">Women</a>
-                <ul class="women_menu" type="none">
-                    <li><a href="">Áo</a></li>
-                    <li><a href="">Vest/Blazer</a></li>
-                    <li><a href="">Chân váy</a></li>
-                    <li><a href="">Quần</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About us</a>
-                <span id="about_content">
-                    <img src="imagine/logo.png">
-                    <p>
-                        Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
-                        Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
-                        sản phẩm độc đáo và đẹp mắt. Tại đây, chúng tôi tự hào giới thiệu những bộ sưu tập đặc sắc, từ những 
-                        chiếc áo thời trang, đồ trang sức đến những đồ nội thất độc lạ - tất cả đều đậm chất retro và vintage.
-                        <br>
-                        <br>
-                        Chúng tôi không chỉ là một trang web bán đồ, mà còn là không gian của những câu chuyện, kỷ niệm và 
-                        sở thích thú vị. Hãy đồng hành cùng chúng tôi để khám phá và tận hưởng sự độc đáo trong từng sản phẩm. 
-                        Với cam kết chất lượng và dịch vụ tận tâm, chúng tôi mong muốn mang lại cho bạn trải nghiệm mua sắm thú vị
-                        và đặc biệt - nơi bạn có thể tìm thấy những khoảnh khắc retro trong cuộc sống hiện đại. 
-                        Hãy đắm chìm trong không gian vintage của chúng tôi và tạo nên phong cách riêng biệt cho chính mình!
-                    </p>
-                </span> 
-            </li>
-            <li id="contact_home"><a href="">Contact</a></li>
-            <?php 
-                if (isset($_SESSION['valid'])) {
-                    echo '<li id=login><a href="#">Xin chào ' . $_SESSION['username'] . '!</a></li>';
-                    echo "<li><a href='php/logout.php'>Log out</a></li>";
-                } else {
-                    echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
-                }
-            ?>
-          </ul>
-        </div>
-        </nav>
+            <div class="home_bar" >
+               <div id="close_menu">X</div>
+             <ul type ="none">
+               <span><img src="imagine/logo.png" width="70px"></span> 
+               <li><a href="index.php">Home</a></li>
+               <li>
+                   <a href="product_page_men.php">Men</a>
+                   <ul class="men_menu" type="none">
+                       <li><a href="">T-shirt</a></li>
+                       <li><a href="">Somi</a></li>
+                       <li><a href="">Vest/Blazer</a></li>
+                       <li><a href="">Quần</a></li>
+                   </ul>
+               </li>
+               <li>
+                   <a href="product_page_women.php">Women</a>
+                   <ul class="women_menu" type="none">
+                       <li><a href="">Áo</a></li>
+                       <li><a href="">Vest/Blazer</a></li>
+                       <li><a href="">Chân váy</a></li>
+                       <li><a href="">Quần</a></li>
+                   </ul>
+               </li>
+               <li>
+                   <a href="">About us</a>
+                   <span id="about_content">
+                       <img src="imagine/logo.png">
+                       <p>
+                           Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
+                           Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
+                           sản phẩm độc đáo và đẹp mắt. Tại đây, chúng tôi tự hào giới thiệu những bộ sưu tập đặc sắc, từ những 
+                           chiếc áo thời trang, đồ trang sức đến những đồ nội thất độc lạ - tất cả đều đậm chất retro và vintage.
+                           <br>
+                           <br>
+                           Chúng tôi không chỉ là một trang web bán đồ, mà còn là không gian của những câu chuyện, kỷ niệm và 
+                           sở thích thú vị. Hãy đồng hành cùng chúng tôi để khám phá và tận hưởng sự độc đáo trong từng sản phẩm. 
+                           Với cam kết chất lượng và dịch vụ tận tâm, chúng tôi mong muốn mang lại cho bạn trải nghiệm mua sắm thú vị
+                           và đặc biệt - nơi bạn có thể tìm thấy những khoảnh khắc retro trong cuộc sống hiện đại. 
+                           Hãy đắm chìm trong không gian vintage của chúng tôi và tạo nên phong cách riêng biệt cho chính mình!
+                       </p>
+                   </span> 
+               </li>
+               <li id="contact_home"><a href="">Contact</a></li>
+                <?php 
+                    if (isset($_SESSION['valid'])) {
+                        echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                        echo "<li><a href='php/logout.php'>Log out</a></li>";
+                    } else {
+                        echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                    }
+                ?>
+             </ul>
+           </div>
+           </nav>
         
       
         <div class="container">
@@ -130,33 +134,42 @@
                             <th>Thành tiền</th>
                             <th>Xóa</th>
                         </tr>
-                       <?php
+                        <?php
                             if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
-                                for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++) { 
+                                for ($i=0; $i < sizeof($_SESSION['cus-cart']); $i++) {
                                     echo '
                                     <tr>
                                         <td><img src="'.$_SESSION['cus-cart'][$i][0].'"></td>
                                         <td><p>'.$_SESSION['cus-cart'][$i][1].' </p></td>
                                         <td><p>'.$_SESSION['cus-cart'][$i][3].'</p></td>
-                                        <td><select name="" id="">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                        <td>
+                                            <form action="" method="post">
+                                                <input type="number" name="num_pro" id="quantity" min="1" max="'.$_SESSION['cus-cart'][$i][4].'">
+                                                <input type="submit" name="sub_num_pro" value="Chọn">
+                                            </form>
                                         </td>
-                                        <td><p>'.number_format($_SESSION['cus-cart'][$i][2],3).'</p><sub>vnd</sub></td>
-                                        <form method="post">
-                                            <td>
+                                        <td>';
+                                    if(isset($_POST['num_pro'])){  
+                                        
+                                        $total_money =  $total_money  + $_SESSION['cus-cart'][$i][2] * $_POST['num_pro'];
+                                        echo '<p>'.number_format($_SESSION['cus-cart'][$i][2] * $_POST['num_pro'], 3).'</p><sub>vnd</sub>';
+                                        unset($_POST['num_pro']) ;  
+                                    } else {
+                                        $total_money =  $total_money  + $_SESSION['cus-cart'][$i][2];
+                                        echo '<p>'.number_format($_SESSION['cus-cart'][$i][2], 3).'</p><sub>vnd</sub>';
+                                    }
+                                    echo '</td>';    
+                                    echo '
+                                        <td>
+                                            <form method="post">
                                                 <button type="submit" id="del_pro" name="del_pro" value="'.$i.'">X</button>
-                                            </td>
-                                        </form>
+                                            </form>
+                                        </td>
                                     </tr>';
                                 }
                             }
-                       ?>
-                        
+                        ?>
+
                         <!-- <tr>
                             <td><img src="/imagine/Product_img/Men_img/aothun1.jpg" alt=""></td>
                             <td><p>Áo thun trắng mini-logo</p></td>
@@ -178,7 +191,7 @@
                 <div class="content_right">
                     <div class="total">
                         Tổng tiền
-                        <span id="money"><b>600.000vnd</b></span>
+                        <span id="money"><b><?php echo number_format($total_money,3); ?> vnd</b></span>
                     </div>
                     <div class="note">
                         <h3>Ghi chú</h3>

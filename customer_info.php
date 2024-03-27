@@ -13,7 +13,7 @@
         <div class="container">
             <div class="box form-box">  
 
-            <!-- <?php
+            <?php
                 include("php/config.php");
 
                 if(isset($_POST['submit'])){
@@ -29,11 +29,11 @@
                     mysqli_query($connect,"INSERT INTO customers (CName,CPhone,CAddress,UID)
                                                 VALUES('$name','$phone','$address','$UID')");
                     echo "<div class='message'>
-                    <p> Cập nhật thành công!</p>
-                </div> <br>";
-                echo "<a href='index.php'><button class='btn'>Về trang chủ</button></a>";
+                            <p> Cập nhật thành công!</p>
+                        </div> <br>";
+                    echo "<a href='index.php'><button class='btn'>Về trang chủ</button></a>";
                 } else{
-            ?> -->
+            ?> 
 
                     <form action="" method="post" class="sign-up-form">
                         <?php
