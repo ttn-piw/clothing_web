@@ -252,6 +252,20 @@ button:hover{
     font-weight: 600;
     transition: 0.5s ease-in-out;
 }
+
+.minus_pro,.plus_pro{
+    width: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 20px;
+}
+.quantity{
+    width: 40px;
+}
+#update_quan{
+    width: 60px;
+    background-color: #fff;
+}
 #del_pro{
     width:50px;
     color:#ececec;
@@ -274,7 +288,10 @@ button:hover{
 #money{
     padding-left: 30%;
 }
+
 #get_bill{
+    cursor: pointer;
+    color: #fff;
     width: 50%;
     margin-top: 30px;
     margin-bottom: 30px;

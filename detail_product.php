@@ -123,7 +123,10 @@
                     <hr>
                     <?php
                         if ($remain > 0 )
-                            echo "<button>THÊM VÀO GIỎ HÀNG</button>";
+                            echo '<form action="cart.php" method="post">
+                                    <input type="hidden" name="PID" value="'.$PID.'">
+                                    <button type="submit" name="submit">Thêm vào giỏ hàng</button>
+                                  </form>';
                     ?>
                 </div>
             </div>

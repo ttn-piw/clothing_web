@@ -1,7 +1,7 @@
 <?php
-    $total_money = 0;
     include("php/config.php");
     session_start();
+    $_SESSION['total_money'] = 0;
     if (!isset($_SESSION['username'])) {
         header("Location: login.php");
         exit();
@@ -11,6 +11,9 @@
     if(isset($_POST['submit'])) {
        if(isset($_POST['PID'])) {
            $PID = $_POST['PID'];
+            $date = date("Y-m-d");
+           $SQL1 = "INSERT INTO orders(ID,PID,O_Date) VALUES('".$_SESSION['username']."','$PID','$date')";
+           $connect->query($SQL1);
            $SQL = "SELECT * FROM product WHERE PID ='$PID'";
            $result = $connect->query($SQL);
 
@@ -21,8 +24,25 @@
                    $pro_price = $row_data['PPrice'];
                    $pro_size = $row_data['PSize'];
                    $pro_remain =$row_data['PRemain'];
-                   $product=[$pro_image,$pro_name,$pro_price,$pro_size,$pro_remain];
-                   $_SESSION['cus-cart'][] = $product;
+                   $pro_quantity = 1;
+
+                   $check = 0;
+                   for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++) { 
+                        if($_SESSION['cus-cart'][$i][1] == $pro_name){
+                            $check = 1;
+                            if ($_SESSION['cus-cart'][$i][5] + $pro_quantity < $pro_remain){
+                                $new_quantity = $_SESSION['cus-cart'][$i][5] + $pro_quantity;
+                                $_SESSION['cus-cart'][$i][5] = $new_quantity;
+                            } else 
+                                $_SESSION['cus-cart'][$i][5] = $pro_remain;
+                            break;
+                        }
+
+                   }
+                   if ($check == 0){
+                    $product=[$pro_image,$pro_name,$pro_price,$pro_size,$pro_remain,$pro_quantity];
+                    $_SESSION['cus-cart'][] = $product;
+                   }
                }
            }
        } else {
@@ -135,41 +155,49 @@
                             <th>Xóa</th>
                         </tr>
                         <?php
-                            if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
-                                for ($i=0; $i < sizeof($_SESSION['cus-cart']); $i++) {
-                                    echo '
-                                    <tr>
-                                        <td><img src="'.$_SESSION['cus-cart'][$i][0].'"></td>
-                                        <td><p>'.$_SESSION['cus-cart'][$i][1].' </p></td>
-                                        <td><p>'.$_SESSION['cus-cart'][$i][3].'</p></td>
-                                        <td>
-                                            <form action="" method="post">
-                                                <input type="number" name="num_pro" id="quantity" min="1" max="'.$_SESSION['cus-cart'][$i][4].'">
-                                                <input type="submit" name="sub_num_pro" value="Chọn">
-                                            </form>
-                                        </td>
-                                        <td>';
-                                    if(isset($_POST['num_pro'])){  
-                                        
-                                        $total_money =  $total_money  + $_SESSION['cus-cart'][$i][2] * $_POST['num_pro'];
-                                        echo '<p>'.number_format($_SESSION['cus-cart'][$i][2] * $_POST['num_pro'], 3).'</p><sub>vnd</sub>';
-                                        unset($_POST['num_pro']) ;  
-                                    } else {
-                                        $total_money =  $total_money  + $_SESSION['cus-cart'][$i][2];
-                                        echo '<p>'.number_format($_SESSION['cus-cart'][$i][2], 3).'</p><sub>vnd</sub>';
-                                    }
-                                    echo '</td>';    
-                                    echo '
-                                        <td>
-                                            <form method="post">
-                                                <button type="submit" id="del_pro" name="del_pro" value="'.$i.'">X</button>
-                                            </form>
-                                        </td>
-                                    </tr>';
+                        if(isset($_POST['action'])) {
+                            $action = $_POST['action'];
+                            $productIndex = $_POST['product_index'];
+
+                            if($action === 'plus' && $_SESSION['cus-cart'][$productIndex][5] < $_SESSION['cus-cart'][$productIndex][4]) {
+                                $_SESSION['cus-cart'][$productIndex][5]++;
+                            } elseif($action === 'minus') {
+                                if($_SESSION['cus-cart'][$productIndex][5] > 0) {
+                                    $_SESSION['cus-cart'][$productIndex][5]--;
                                 }
                             }
-                        ?>
+                        }
 
+                        if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
+                            for ($i=0; $i < sizeof($_SESSION['cus-cart']); $i++) {
+                                echo '
+                                <tr>
+                                    <td><img src="'.$_SESSION['cus-cart'][$i][0].'"></td>
+                                    <td><p>'.$_SESSION['cus-cart'][$i][1].' </p></td>
+                                    <td><p>'.$_SESSION['cus-cart'][$i][3].'</p></td>
+                                    <td>
+                                        <form method="post">
+                                            <input type="hidden" name="product_index" value="'.$i.'">
+                                            <button class="minus_pro" name="action" value="minus">-</button>
+                                            <input type="number" name="quantity" class="quantity" value="'.$_SESSION['cus-cart'][$i][5].'" min="0" max="'.$_SESSION['cus-cart'][$i][4].'">
+                                            <button class="plus_pro" name="action" value="plus">+</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <p class="product_money">
+                                            '.  number_format($_SESSION['cus-cart'][$i][2] * $_SESSION['cus-cart'][$i][5], 3).'
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <form method="post">
+                                            <button id="del_pro" name="del_pro" value="'.$i.'">X</button>
+                                        </form>
+                                    </td>
+                                </tr>';
+                            }
+                           
+                        }
+                        ?>
                         <!-- <tr>
                             <td><img src="/imagine/Product_img/Men_img/aothun1.jpg" alt=""></td>
                             <td><p>Áo thun trắng mini-logo</p></td>
@@ -191,7 +219,12 @@
                 <div class="content_right">
                     <div class="total">
                         Tổng tiền
-                        <span id="money"><b><?php echo number_format($total_money,3); ?> vnd</b></span>
+                        <span id="money"><b><?php
+                            for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++) { 
+                                $_SESSION['total_money'] = $_SESSION['total_money'] + ($_SESSION['cus-cart'][$i][2] * $_SESSION['cus-cart'][$i][5]);
+                            }
+                                echo number_format($_SESSION['total_money'],3); ?> vnd</b>
+                        </span>
                     </div>
                     <div class="note">
                         <h3>Ghi chú</h3>
@@ -215,8 +248,9 @@
                                 </label>
                             </div>
                     </div>
-                    <button type="submit" name="get_bill" id="get_bill"><a href="">THANH TOÁN</a></button>
-                    
+                    <form action="payment.html" method="get">
+                        <button type="submit" name="get_bill" id="get_bill">THANH TOÁN</button>
+                    </form>
                 </div>
             </div>
         </div>
