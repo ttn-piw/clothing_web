@@ -1,6 +1,15 @@
 <?php
     include("php/config.php");
     session_start();
+   
+    if(isset($_GET['id'])){
+        $ID = $_GET['id'];
+        $sql_del = "DELETE FROM product WHERE PID='$ID' ";
+        $connect->query($sql_del);
+        $connect->close();
+        header("location: admin_page_product.php");
+    };
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +75,7 @@
                 $rs = $connect->query($sql_query);
                 if($rs->num_rows > 0)
                     while($row_data = $rs->fetch_assoc()){    
+                        
                 ?> 
                     <tr>
                         <td><?php echo $row_data['PID']; ?></td>
@@ -76,8 +86,18 @@
                         <td><?php echo $row_data['PRemain'] ?></td>
                         <td><?php echo $row_data['PDetail'] ?></td>
                         <td><?php echo $row_data['CTG_Name'] ?></td>
-                        <td><a href="">Sửa</a></td>
-                        <td><a href="">Xóa</a></td>
+                        
+                        <form action="" method="get">
+                            <td name="edit_product_page">
+                                <td><a href="admin_page_edit_product.php?id=<?php echo $row_data['PID']; ?>">Sửa</a></td>
+                            </td>
+                        </form>
+                        <form action="" method="get">
+                            <td name="del_product_page">
+                                <a onclick="return Del_pro('<?php echo $row_data['PName']; ?>')" href="admin_page_product.php?id=<?php echo $row_data['PID']; ?>">Xóa</a>
+                            </td>
+                        </form>
+
                     </tr>
                 <?php
                     }
@@ -85,5 +105,10 @@
             </table>
         </div>
     </section>
+    <script>
+        function Del_pro(name_pro){
+            return confirm("Bạn muốn xóa sản phẩm: "+ name_prp + "? ");
+        }
+    </script>
 </body>
 </html>

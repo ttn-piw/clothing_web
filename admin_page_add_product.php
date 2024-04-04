@@ -31,7 +31,6 @@
 
                 $image = $_FILES['pro_image']['name'];
                 $image_tmp = $_FILES['pro_image']['tmp_name'];
-                // $folder = 'imagine/'.$image;
 
                 $price = $_POST['pro_price'];
                 $size = $_POST['pro_size'];
@@ -39,14 +38,12 @@
                 $detail = $_POST['pro_detail'];
                 $categories  = $_POST['pro_cate'];
                 $insert_pro = "  INSERT INTO product(PName,PPrice,PSize,PRemain,PDetail,PImage,CTG_ID)
-                                VALUES('$name','$price','$size','$quantity','$detail','$image','$categories')";
+                                VALUES('$name','$price','$size','$quantity','$detail','imagine/$image','$categories')";
                 $connect->query($insert_pro);
 
-                if(move_uploaded_file($image_tmp, "imagine/$image")) {
-                    echo "<script>alert('Image has uploaded')</script>";
-                }
-
-            } else  echo "<script>alert('Image has not uploaded')</script>";
+                move_uploaded_file($image_tmp, "imagine/$image");
+                header("location: admin_page_product.php");
+            }
         ?>
     <?php
         if (isset($_SESSION['valid'])) {
@@ -75,14 +72,14 @@
                 <li><a href="">Sản phẩm </a>
                     <ul>
                         <li><a href="">Thêm sản phẩm</a></li>
-                        <li><a href="">Danh sách sản phẩm</a></li>
+                        <li><a href="admin_page_product.php">Danh sách sản phẩm</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div class="admin-content-right">
             <h2>Thêm sản phẩm</h2>
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="text_input">
                     <label for="pro_name">
                         <div class="head">Tên sản phẩm</div>
