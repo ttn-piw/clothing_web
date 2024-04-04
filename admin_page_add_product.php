@@ -22,11 +22,31 @@
     <header>
         <h1>TOP</h1>
         <?php
+            $sql_categories = "SELECT * FROM categories";
+            $rs_cate = $connect->query($sql_categories);
+        ?>
+        <?php
             if(isset($_POST['add'])){
                 $name = $_POST['pro_name'];
-        
-                echo $name;
-            } else echo "Chua co"
+
+                $image = $_FILES['pro_image']['name'];
+                $image_tmp = $_FILES['pro_image']['tmp_name'];
+                // $folder = 'imagine/'.$image;
+
+                $price = $_POST['pro_price'];
+                $size = $_POST['pro_size'];
+                $quantity = $_POST['pro_quantity'];
+                $detail = $_POST['pro_detail'];
+                $categories  = $_POST['pro_cate'];
+                $insert_pro = "  INSERT INTO product(PName,PPrice,PSize,PRemain,PDetail,PImage,CTG_ID)
+                                VALUES('$name','$price','$size','$quantity','$detail','$image','$categories')";
+                $connect->query($insert_pro);
+
+                if(move_uploaded_file($image_tmp, "imagine/$image")) {
+                    echo "<script>alert('Image has uploaded')</script>";
+                }
+
+            } else  echo "<script>alert('Image has not uploaded')</script>";
         ?>
     <?php
         if (isset($_SESSION['valid'])) {
@@ -84,7 +104,7 @@
                 <div class="text_input">
                     <label for="pro_size">
                         <div class="head">Size</div>
-                        <select>
+                        <select name="pro_size">
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
@@ -107,9 +127,11 @@
                 <div class="text_input">
                     <label for="pro_cate">
                         <div class="head">Loại sản phẩm</div>
-                        <select>
-                            <option value="T-shirt">Tee shirt</option>
-                            <option value="Somi">Sơ mi</option>
+                        <select name="pro_cate">
+                            <?php
+                                while($row_cate = $rs_cate->fetch_assoc()) {?>
+                                    <option value="<?php echo $row_cate['CTG_ID'] ?>"><?php echo $row_cate['CTG_Name'] ?></option>
+                            <?php }?>
                         </select>
                     </label>
                 </div>
