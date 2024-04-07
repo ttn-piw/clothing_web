@@ -4,10 +4,10 @@
    
     if(isset($_GET['id'])){
         $ID = $_GET['id'];
-        $sql_del = "DELETE FROM product WHERE PID='$ID' ";
+        $sql_del = "DELETE FROM categories WHERE CTG_ID='$ID' ";
         $connect->query($sql_del);
         $connect->close();
-        header("location: admin_page_product.php");
+        header("location: admin_page_categories.php");
     };
 
 ?>
@@ -57,43 +57,32 @@
             <h2>Danh mục sản phẩm</h2>
             <table>
                 <tr>
-                    <th>#</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Ảnh sản phẩm</th>
-                    <th>Size</th>
-                    <th>Giá sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Mô tả sản phẩm</th>
+                    <th>ID</th>
                     <th>Loại sản phẩm</th>
+                    <th>Phân loại</th>
                     <th>Sửa</th>
                     <th>Xóa</th>
                 </tr>
                 <?php
-                $sql_query = "  SELECT * FROM product p JOIN categories c 
-                                ON  p.CTG_ID = c.CTG_ID";
-                $rs = $connect->query($sql_query);
-                if($rs->num_rows > 0)
-                    while($row_data = $rs->fetch_assoc()){    
+                $sql_list_cate = "  SELECT * FROM collection cl JOIN categories c 
+                                ON  cl.COL_ID = c.COL_ID";
+                $rs_cate = $connect->query($sql_list_cate);
+                if($rs_cate->num_rows > 0)
+                    while($row_data_cate = $rs_cate->fetch_assoc()){    
                         
                 ?> 
                     <tr>
-                        <td><?php echo $row_data['PID']; ?></td>
-                        <td><p><?php echo $row_data['PName'] ?></p></td>
-                        <td><img src="<?php echo $row_data['PImage'] ?>" alt=""></td>
-                        <td><p><?php echo $row_data['PSize'] ?></p></td>
-                        <td><p><?php echo number_format($row_data['PPrice'],3) ?></p><sub>vnd</sub></td>
-                        <td><?php echo $row_data['PRemain'] ?></td>
-                        <td><?php echo $row_data['PDetail'] ?></td>
-                        <td><?php echo $row_data['CTG_Name'] ?></td>
-                        
+                        <td><p><?php echo $row_data_cate['CTG_ID']; ?></p></td>
+                        <td><p><?php echo $row_data_cate['CTG_Name']; ?></p></td>
+                        <td><p><?php echo $row_data_cate['COL_Sex']; ?></p></td>
                         <form action="" method="get">
-                            <td name="edit_product_page">
-                                <a href="admin_page_edit_product.php?id=<?php echo $row_data['PID']; ?>&cate_id=<?php echo $row_data['CTG_ID']; ?>">Sửa</a>
+                            <td name="edit_cate_page">
+                                <a href="admin_page_edit_categories.php?id=<?php echo $row_data_cate['CTG_ID']; ?>">Sửa</a>
                             </td>
                         </form>
                         <form action="" method="get">
-                            <td name="del_product_page">
-                                <a onclick="return Del_pro('<?php echo $row_data['PName']; ?>')" href="admin_page_product.php?id=<?php echo $row_data['PID']; ?>">Xóa</a>
+                            <td name="del_cate_page">
+                                <a onclick="return Del_cate('<?php echo $row_data_cate['CTG_Name']; ?>')" href="admin_page_categories.php?id=<?php echo $row_data_cate['CTG_ID']; ?>">Xóa</a>
                             </td>
                         </form>
 
@@ -105,8 +94,8 @@
         </div>
     </section>
     <script>
-        function Del_pro(name_pro){
-            return confirm("Bạn muốn xóa sản phẩm: "+ name_prp + "? ");
+        function Del_cate(name_cate){
+            return confirm("Bạn muốn xóa sản phẩm: "+ name_cate + "? ");
         }
     </script>
 </body>

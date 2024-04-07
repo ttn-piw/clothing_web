@@ -22,23 +22,28 @@
 
         if(isset($_POST['edit'])){
             $p_name =  $_POST['pro_name'];
-            
-            $p_image = $_FILES['pro_image']['name'];
-            $p_temp_image = $_FILES['pro_image']['tmp_name'];
-
             $p_price = $_POST['pro_price'];
             $p_size = $_POST['pro_size'];
             $p_quantity = $_POST['pro_quantity'];
             $p_detail = $_POST['pro_detail'];
             $p_cate = $_POST['pro_cate'];
-
-           
-            $sql_update = " UPDATE product SET PName='$p_name' ,PImage='imagine/$p_image',PPrice='$p_price',
+            
+            if ($_FILES['pro_image']['name'] == ''){
+                $p_image = $image;
+                $sql_update = " UPDATE product SET PName='$p_name' ,PImage='$p_image',PPrice='$p_price',
+                                PSize='$p_size',PDetail='$p_detail',PRemain='$p_quantity',CTG_ID='$p_cate'
+                                WHERE PID ='$ID' ";
+                move_uploaded_file($p_temp_image, $p_image);
+            } else {
+                $p_image = $_FILES['pro_image']['name'];
+                $p_temp_image = $_FILES['pro_image']['tmp_name'];
+                $sql_update = " UPDATE product SET PName='$p_name' ,PImage='imagine/$p_image',PPrice='$p_price',
                             PSize='$p_size',PDetail='$p_detail',PRemain='$p_quantity',CTG_ID='$p_cate'
                             WHERE PID ='$ID' ";
+                move_uploaded_file($p_temp_image, "imagine/$p_image");
+            }
             $connect->query($sql_update);
 
-            move_uploaded_file($p_temp_image, "imagine/$p_image");
             header("location: admin_page_product.php");
             
         } else echo "Cant submit";
@@ -59,16 +64,15 @@
     <section class="admin-content">
         <div class="admin-content-left">
             <ul>
-                <li><a href="">Danh mục</a>
+                <li><a href="">Tài khoản</a>
                     <ul>
-                        <li><a href="">Thêm Danh mục</a></li>
-                        <li><a href="">Danh sách danh mục</a></li>
+                        <li><a href="admin_page_account.php">Danh sách tài khoản</a></li>
                     </ul>
                 </li>
                 <li><a href="">Loại sản phẩm</a>
                     <ul>
-                        <li><a href="">Thêm loại sản phẩm</a></li>
-                        <li><a href="">Danh sách loại sản phẩm</a></li>
+                        <li><a href="admin_page_add_categories.php">Thêm loại sản phẩm</a></li>
+                        <li><a href="admin_page_categories.php">Danh sách loại sản phẩm</a></li>
                     </ul>
                 </li>
                 <li><a href="">Sản phẩm </a>
