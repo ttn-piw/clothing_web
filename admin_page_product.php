@@ -48,8 +48,8 @@
                 </li>
                 <li><a href="">Sản phẩm </a>
                     <ul>
-                        <li><a href="">Thêm sản phẩm</a></li>
-                        <li><a href="">Danh sách sản phẩm</a></li>
+                        <li><a href="admin_page_add_product.php">Thêm sản phẩm</a></li>
+                        <li><a href="admin_page_product.php">Danh sách sản phẩm</a></li>
                     </ul>
                 </li>
             </ul>
@@ -89,7 +89,7 @@
                         
                         <form action="" method="get">
                             <td name="edit_product_page">
-                                <td><a href="admin_page_edit_product.php?id=<?php echo $row_data['PID']; ?>">Sửa</a></td>
+                                <td><a href="admin_page_edit_product.php?id=<?php echo $row_data['PID']; ?>&cate_id=<?php echo $row_data['CTG_ID']; ?>">Sửa</a></td>
                             </td>
                         </form>
                         <form action="" method="get">

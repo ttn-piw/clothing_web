@@ -1,13 +1,5 @@
 <?php
     include("php/config.php");
-
-    if(isset($_POST['add'])){
-        $name = $_POST['pro_name'];
-        
-
-        echo $name;
-    } else echo "Chua co"
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +63,7 @@
                 </li>
                 <li><a href="">Sản phẩm </a>
                     <ul>
-                        <li><a href="">Thêm sản phẩm</a></li>
+                        <li><a href="admin_page_add_product.php">Thêm sản phẩm</a></li>
                         <li><a href="admin_page_product.php">Danh sách sản phẩm</a></li>
                     </ul>
                 </li>
