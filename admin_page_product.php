@@ -106,8 +106,15 @@
     </section>
     <script>
         function Del_pro(name_pro){
-            return confirm("Bạn muốn xóa sản phẩm: "+ name_prp + "? ");
+            <?php
+                if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
+                    $_SESSION['del_from_admin'] = 1;
+                    unset($_SESSION['cus-cart']);
+                }
+                
+            ?>
+            return confirm("Hành động xóa sẽ xóa hết tất cả dữ liệu. Bạn xác nhận xóa sản phẩm: "+ name_pro + "? ");
         }
-    </script>
+</script>
 </body>
 </html>

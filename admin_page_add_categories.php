@@ -15,26 +15,20 @@
         <h1>TOP</h1>
         <?php
             $sql_categories = "SELECT * FROM categories";
+            $sql_collection = "SELECT * FROM collection";
             $rs_cate = $connect->query($sql_categories);
+            $rs_col = $connect->query($sql_collection);
         ?>
         <?php
             if(isset($_POST['add'])){
-                $name = $_POST['pro_name'];
+                $col_name = $_POST['col_name'];
+                $ctg_name = $_POST['ctg_name'];
 
-                $image = $_FILES['pro_image']['name'];
-                $image_tmp = $_FILES['pro_image']['tmp_name'];
-
-                $price = $_POST['pro_price'];
-                $size = $_POST['pro_size'];
-                $quantity = $_POST['pro_quantity'];
-                $detail = $_POST['pro_detail'];
-                $categories  = $_POST['pro_cate'];
-                $insert_pro = "  INSERT INTO product(PName,PPrice,PSize,PRemain,PDetail,PImage,CTG_ID)
-                                VALUES('$name','$price','$size','$quantity','$detail','imagine/$image','$categories')";
-                $connect->query($insert_pro);
-
-                move_uploaded_file($image_tmp, "imagine/$image");
-                header("location: admin_page_product.php");
+                $sql_add_cate = "   INSERT INTO categories(COL_ID,CTG_Name)
+                                    VALUES ('$col_name','$ctg_name')";
+                $connect->query($sql_add_cate);
+                $connect->close();
+                header("location: admin_page_categories.php");
             }
         ?>
     <?php
@@ -69,58 +63,23 @@
             </ul>
         </div>
         <div class="admin-content-right">
-            <h2>Thêm sản phẩm</h2>
-            <form action="" method="post" enctype="multipart/form-data">
+            <h2>Thêm loại sản phẩm</h2>
+            <form action="" method="post">
                 <div class="text_input">
-                    <label for="pro_name">
-                        <div class="head">Tên sản phẩm</div>
-                        <input type="text" name="pro_name" required>
-                    </label>
-                </div>
-                <div class="text_input">
-                    <label for="pro_image">
-                        <div class="head">Ảnh sản phẩm</div>
-                        <input type="file" name="pro_image">
-                    </label>
-                </div>
-                <div class="text_input">
-                    <label for="pro_price">
-                        <div class="head">Giá sản phẩm</div>
-                        <input type="number" id="pro_price" name="pro_price" required><sub> vnd</sub>
-                    </label>
-                </div>
-                <div class="text_input">
-                    <label for="pro_size">
-                        <div class="head">Size</div>
-                        <select name="pro_size">
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="text_input">
-                    <label for="pro_quantity">
-                        <div class="head">Số lượng sản phẩm</div>
-                        <input type="number" id="pro_quantity" name="pro_quantity" required>
-                    </label>
-                </div>
-                <div class="text_input">
-                    <label for="pro_detail">
-                        <div class="head">Mô tả sản phẩm</div>
-                        <input type="text" id="pro_detail" name="pro_detail" required>
-                    </label>
-                </div>
-                <div class="text_input">
-                    <label for="pro_cate">
-                        <div class="head">Loại sản phẩm</div>
-                        <select name="pro_cate">
+                    <label for="col_name">
+                        <div class="head">Bộ sưu tập</div>
+                        <select name="col_name">
                             <?php
-                                while($row_cate = $rs_cate->fetch_assoc()) {?>
-                                    <option value="<?php echo $row_cate['CTG_ID'] ?>"><?php echo $row_cate['CTG_Name'] ?></option>
+                                while($row_col = $rs_col->fetch_assoc()) {?>
+                                    <option value="<?php echo $row_col['COL_ID'] ?>"><?php echo $row_col['COL_Sex'] ?></option>
                             <?php }?>
                         </select>
+                    </label>
+                </div>
+                <div class="text_input">
+                    <label for="ctg_name">
+                        <div class="head">Tên loại sản phẩm mới</div>
+                        <input type="text" name="ctg_name" required>
                     </label>
                 </div>
                 <button class="add_pro_page" name="add">Thêm mới</button>

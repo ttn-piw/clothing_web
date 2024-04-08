@@ -60,7 +60,6 @@
                     <th>ID</th>
                     <th>Loại sản phẩm</th>
                     <th>Phân loại</th>
-                    <th>Sửa</th>
                     <th>Xóa</th>
                 </tr>
                 <?php
@@ -75,11 +74,6 @@
                         <td><p><?php echo $row_data_cate['CTG_ID']; ?></p></td>
                         <td><p><?php echo $row_data_cate['CTG_Name']; ?></p></td>
                         <td><p><?php echo $row_data_cate['COL_Sex']; ?></p></td>
-                        <form action="" method="get">
-                            <td name="edit_cate_page">
-                                <a href="admin_page_edit_categories.php?id=<?php echo $row_data_cate['CTG_ID']; ?>">Sửa</a>
-                            </td>
-                        </form>
                         <form action="" method="get">
                             <td name="del_cate_page">
                                 <a onclick="return Del_cate('<?php echo $row_data_cate['CTG_Name']; ?>')" href="admin_page_categories.php?id=<?php echo $row_data_cate['CTG_ID']; ?>">Xóa</a>

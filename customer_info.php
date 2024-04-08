@@ -22,12 +22,27 @@
                     $address = $_POST['cus_address'];
                     
                     $email = $_SESSION['valid'];
-                    $result =  mysqli_query($connect,"SELECT * FROM users WHERE Email = '$email' ");
-                    $row_uid = mysqli_fetch_assoc($result);
-                    $UID = $row_uid['ID'];
-
-                    mysqli_query($connect,"INSERT INTO customers (CName,CPhone,CAddress,UID)
-                                                VALUES('$name','$phone','$address','$UID')");
+                    $sql_check_email = "SELECT * FROM customers c JOIN users u ON c.UID = u.ID
+                                         WHERE u.Email = '$email'";
+                    $rs_check = $connect ->query($sql_check_email);
+                    if ($rs_check->num_rows > 0){
+                        while ($row_data = $rs_check->fetch_assoc()){
+                            $UID = $row_data['UID'];
+                            $sql_update = " UPDATE customers SET CName = '$name', CPhone = '$phone',
+                                            CAddress = '$address' WHERE customers.UID = '$UID'";
+                            $connect->query($sql_update);
+                        }
+                    } else {
+                        $sql_take_uid = "SELECT * FROM users WHERE Email='$email'";
+                        $rs_take_uid = $connect ->query($sql_take_uid);
+                        while ($row_data_uid = $rs_take_uid->fetch_assoc()){
+                            $u_uid = $row_data_uid['ID'];
+                            $sql_insert_new_info = "INSERT INTO customers (CName,CPhone,CAddress,UID)
+                                                    VALUES('$name','$phone','$address','$u_uid')";
+                            $connect->query($sql_insert_new_info);
+                        }
+                        
+                    }
                     echo "<div class='message'>
                             <p> Cập nhật thành công!</p>
                         </div> <br>";
@@ -41,9 +56,6 @@
                             echo '<h1>Xin chào ' . $_SESSION['valid'] . ' !</h1>';
                         ?>
                         <h2>Thông tin khách hàng</h2>
-                            <!-- <div class="text_input">
-                                POST email
-                            </div> -->
                             <div class="text_input">
                                 <label for="cus_name"><i class="fa-solid fa-user"></i>
                                     <input type="text" name="cus_name" id="cus_name" placeholder="Họ và tên" required>

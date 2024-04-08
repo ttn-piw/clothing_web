@@ -1,6 +1,12 @@
 <?php
     include("php/config.php");
     session_start();
+
+    if($_SESSION['del_from_admin'] == 1){
+        $_SESSION['del_from_admin'] = 0;
+        header("location: index.php");
+    }
+
     $_SESSION['total_money'] = 0;
     if (!isset($_SESSION['username'])) {
         header("Location: login.php");
@@ -11,7 +17,7 @@
     if(isset($_POST['submit'])) {
        if(isset($_POST['PID'])) {
            $PID = $_POST['PID'];
-            $date = date("Y-m-d");
+           $date = date("Y-m-d");
            $SQL1 = "INSERT INTO orders(ID,PID,O_Date) VALUES('".$_SESSION['username']."','$PID','$date')";
            $connect->query($SQL1);
            $SQL = "SELECT * FROM product WHERE PID ='$PID'";
@@ -52,16 +58,23 @@
        echo "Form was not submitted";
    }
    
-   function deleteProduct($index) {
-    if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])) {
-        unset($_SESSION['cus-cart'][$index]);
-        // Re-index the array to avoid gaps in indexes
-        $_SESSION['cus-cart'] = array_values($_SESSION['cus-cart']);
-    }
+   function deleteProduct($index,$del_name) {
+        require_once("php/config.php");
+        if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])) {
+            unset($_SESSION['cus-cart'][$index]);
+            $_SESSION['cus-cart'] = array_values($_SESSION['cus-cart']);
+            // echo "<script>alert('$del_name')</script>";
+            // $sql_take_id = "SELECT * FROM product WHERE PName = '$del_name'";
+            // $rs_take_id = $connect->query($sql_take_id);
+            // $row_take_id = $rs_take_id->fetch_assoc();
+            // $del_pid = $row_take_id['PID'];
+
+            
+        }
     }
 
     if(isset($_POST['del_pro'])){
-        deleteProduct($_POST['del_pro']);
+        deleteProduct($_POST['del_pro'],$_POST['del_name']);
     }
 ?>
 <!DOCTYPE html>
@@ -191,6 +204,7 @@
                                     <td>
                                         <form method="post">
                                             <button id="del_pro" name="del_pro" value="'.$i.'">X</button>
+                                            <input type="hidden" name="del_name" value="'.$_SESSION['cus-cart'][$i][1].'">
                                         </form>
                                     </td>
                                 </tr>';
