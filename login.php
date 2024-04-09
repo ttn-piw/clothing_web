@@ -28,9 +28,13 @@
                             $row_data = mysqli_fetch_assoc($result_set);
                             
                             if(!empty($row_data) && is_array($row_data)){
+                                if ($email == 'admin@gmail.com' && $password == 'admin'){
+                                    header("Location: admin_page_product.php");
+                                } else { 
+                                    header("Location: index.php");
+                                }
                                 $_SESSION['valid'] = $row_data['Email'];
                                 $_SESSION['username'] = $row_data['Username'];  
-                                header("Location: index.php");
                                 exit(); 
                                 
                             } else {

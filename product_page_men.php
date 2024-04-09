@@ -93,14 +93,14 @@
                 <li id="men_vest" class="submenu">Vest/Blazer</li>
                 <li id="men_pant" class="submenu">Quần</li>
             </ul>
-            <div class="option_arr">
+            <!-- <div class="option_arr">
                 <span id="id_option">Sắp xếp:</span>  
                 <select>
                    <option value="0">Sản phẩm nổi bật</option>
                    <option value="1">Giá: Tăng dần</option>
                    <option value="2">Giá: Giảm dần</option>
                 </select>
-           </div>
+           </div> -->
             <div class="content">
                 <div class="tee_space">
                     <div class="title_head">T-SHIRT</div>
@@ -118,10 +118,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -131,42 +135,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="imagine/Product_img/Men_img/aothun.jpg"></div>
-                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                            <div class="item_name">Áo thun nam</div>
-                            <div class="price">309.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/aothun1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Áo thun nam</div>
-                            <div class="price">309.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/aothun2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Áo thun nam</div>
-                            <div class="price">309.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/aothun3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Áo thun nam</div>
-                            <div class="price">309.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/aothun4.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Áo thun nam</div>
-                            <div class="price">309.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/aothun5.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Áo thun nam</div>
-                            <div class="price">309.000 VND</div>
-                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -187,10 +155,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -200,31 +172,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/somi1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi xanh navy nam</div>
-                            <div class="price">359.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/somi2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi nâu</div>
-                            <div class="price">359.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/somi3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi Oxford nam</div>
-                            <div class="price">399.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/Áo Sơ Mi Nam  Tay Lỡ Form Rộng Phối Màu Chất Lụa Hàn Mềm Mại Thoáng Mát Thấm Hút Mồ Hôi.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi nam tay lỡ</div>
-                            <div class="price">309.000 VND</div>
-                        </div>
-                    </div> -->
                 </div>
                 <hr>
                 <!-- VEST/BLAZER ----------------------->
@@ -244,10 +191,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -257,30 +208,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/blazer1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer nam nâu kem</div>
-                            <div class="price">499.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/blazer2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer đen nam</div>
-                            <div class="price">459.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/blazer3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer phong cách</div>
-                            <div class="price">699.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/ZIWOCH Men's Sports Suit Jacket Two Button Business Casual Blazer Wedding Jackets.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer nâu nam</div>
-                            <div class="price">630.000 VND</div>
-                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -301,10 +228,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -314,24 +245,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/quan1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer nam nâu kem</div>
-                            <div class="price">499.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/quan2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer đen nam</div>
-                            <div class="price">459.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Men_img/quan3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Blazer phong cách</div>
-                            <div class="price">699.000 VND</div>
-                        </div> -->
                     </div>
                 </div>
             </div>

@@ -125,10 +125,21 @@
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <div class="item">
-                            <div class="img"><img src="<?php echo $row['PImage']; ?>"></div>
-                            <div class="BtnBuy">Thêm vào giỏ hàng</div>
+                            <div class="img">
+                                    <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                        <img src="<?php echo $row['PImage']; ?>">
+                                    </a>
+                            </div>
+                        <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                        <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';   
+                                } else {
+                                    echo '<div class="BtnBuy">Hết hàng</div>';
+                                } ?>
                             <div class="item_name"><?php echo $row['PName']; ?></div>
-                            <div class="price"><?php echo $row['PPrice']; ?> VND</div>
+                            <div class="price"><?php echo number_format($row['PPrice'],3); ?> VND</div>
                         </div>
                         <?php
                     }
@@ -136,42 +147,6 @@
                     echo "No products available";
                 }
                 ?>
-               <!-- <div class="item">
-                   <div class="img"><img src="imagine/Suits.jpg"></div>
-                   <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                   <div class="item_name">Suits nam</div>
-                   <div class="price">899.000 VND</div>
-                </div>
-                <div class="item">
-                   <div class="img"><img src="/imagine/product1.jpg"></div>
-                   <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                   <div class="item_name">Blazer</div>
-                   <div class="price">599.000 VND</div>
-                </div>
-                <div class="item">
-                   <div class="img"><img src="imagine/Áo Sơ Mi Nam  Tay Lỡ Form Rộng Phối Màu Chất Lụa Hàn Mềm Mại Thoáng Mát Thấm Hút Mồ Hôi.jpg"></div>
-                   <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                   <div class="item_name">Sơ mi tay lỡ</div>
-                   <div class="price">399.000 VND</div>
-                </div>
-                <div class="item">
-                   <div class="img"><img src="/imagine/Product_img/Women_img/blazer3.jpg"></div>
-                   <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                   <div class="item_name">Blazer nữ</div>
-                   <div class="price">1.099.000 VND</div>
-                </div>
-                <div class="item">
-                   <div class="img"><img src="/imagine/Product_img/Women_img/quan1.jpg"></div>
-                   <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                   <div class="item_name">Quần ống suông</div>
-                   <div class="price">499.000 VND</div>
-                </div>
-                <div class="item">
-                   <div class="img"><img src="/imagine/Product_img/Women_img/ao1.jpg"></div>
-                   <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                   <div class="item_name">Áo croptop</div>
-                   <div class="price">299.000 VND</div>
-                </div> -->
 
             </ul>
             <i id="na_left" class="fa-solid fa-angle-left"></i>
@@ -182,13 +157,13 @@
             <div id="title_collection"><a href="">COLLECTION</a></div>
             <div class="content_collection">
              <div class="men_collection">
-               <a href="">
+               <a href="product_page_men.php">
                 <img src="imagine\men_clothing.png" width="700px">
                </a>
                <span class="text_collection_men">MEN COLLECTION</span>
              </div>
              <div class="women_collection">
-               <a href ="">
+               <a href ="product_page_women.php">
                    <img src ="imagine\women_clothing.png" width="700px">
                </a>
                <span class="text_collection_women">WOMEN COLLECTION</span>
@@ -199,42 +174,37 @@
         <div class="container_block">
          <div id="title_bs"><a href="">BEST SELLER</a></div>
             <ul class="list_product" >
-            <div class="item">
-                <div class="img"><img src="/imagine/Product_img/Men_img/blazer3.jpg"></div>
-                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                <div class="item_name">Blazer</div>
-                <div class="price">799.000 VND</div>
-             </div>
-             <div class="item">
-                <div class="img"><img src="/imagine/Product_img/Men_img/aothun.jpg"></div>
-                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                <div class="item_name">Áo thun nam</div>
-                <div class="price">309.000 VND</div>
-             </div>
-             <div class="item">
-                <div class="img"><img src="imagine/Áo Sơ Mi Nam  Tay Lỡ Form Rộng Phối Màu Chất Lụa Hàn Mềm Mại Thoáng Mát Thấm Hút Mồ Hôi.jpg"></div>
-                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                <div class="item_name">Sơ mi tay lỡ</div>
-                <div class="price">399.000 VND</div>
-             </div>
-             <div class="item">
-                <div class="img"><img src="imagine/Product_img/Men_img/quan1.jpg"></div>
-                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                <div class="item_name">Quần tây</div>
-                <div class="price">499.000 VND</div>
-             </div>
-             <div class="item">
-                <div class="img"><img src="/imagine/Product_img/Women_img/blazer1.jpg"></div>
-                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                <div class="item_name">Blazer nữ</div>
-                <div class="price">599.000 VND</div>
-             </div>
-             <div class="item">
-                <div class="img"><img src="/imagine/Product_img/Women_img/ao3.jpg"></div>
-                <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                <div class="item_name">Sơ mi nữ</div>
-                <div class="price">329.000 VND</div>
-             </div>
+                <?php
+                    $sql = "SELECT * FROM product p JOIN categories c ON p.CTG_ID = c.CTG_ID 
+                            WHERE c.CTG_Name='Best Seller'";
+                    $result = $connect->query($sql);
+                    // Loop through each product and display them
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <div class="item">
+                                    <div class="img">
+                                        <a href="detail_product.php?PID=<?php echo $row['PID']; ?>">
+                                            <img src="<?php echo $row['PImage']; ?>">
+                                        </a>
+                                    </div>
+                                <?php if ($row['PRemain'] > 0 ){ 
+                                        echo '<form action="cart.php" method="post">
+                                                <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                                <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                            </form>';
+                                        } else {
+                                            echo '<div class="BtnBuy">Hết hàng</div>';
+                                        } ?>
+                                <div class="item_name"><?php echo $row['PName']; ?></div>
+                                <div class="price"><?php echo number_format($row['PPrice'],3); ?> VND</div>
+                            </div>
+                            <?php
+                        }
+                    } else {
+                        echo "No products available";
+                    }
+                    ?>
          </ul>
          <i id="bs_left" class="fa-solid fa-angle-left"></i>
          <i id="bs_right" class="fa-solid fa-angle-right"></i>
@@ -244,16 +214,16 @@
             <div class="title_news">TIN TỨC THỜI TRANG</div>
             <ul class="content_news" type="none">
                 <li>
-                    <a href="https://www.realmenrealstyle.com/dress-for-body-type/"><img src="/imagine/body_shape_news.jpg" alt="">
+                    <a href="https://www.realmenrealstyle.com/dress-for-body-type/"><img src="imagine/body_shape_news.jpg" alt="">
                     </a>
                     <h3><a href="https://www.realmenrealstyle.com/dress-for-body-type/">TÌM HIỂU "HÌNH KHỐI" CƠ THỂ CỦA CHÚNG TA?</a></h3>
                 </li>
                 <li>
-                    <a href="https://cardina.vn/blogs/kien-thuc-thoi-trang/phong-cach-thoi-trang-nam"><img src="/imagine/style.jpg" alt=""></a>
+                    <a href="https://cardina.vn/blogs/kien-thuc-thoi-trang/phong-cach-thoi-trang-nam"><img src="imagine/style.jpg" alt=""></a>
                     <h3><a href="https://www.realmenrealstyle.com/dress-for-body-type/">THỜI TRANG NAM "HOT" TRONG NĂM 2024 CHO NAM GIỚI?</a></h3>
                 </li>
                 <li>
-                    <a href="https://cardina.vn/blogs/kien-thuc-thoi-trang/cac-phong-cach-thoi-trang"><img src="/imagine/style_women_news.png" alt=""></a>
+                    <a href="https://cardina.vn/blogs/kien-thuc-thoi-trang/cac-phong-cach-thoi-trang"><img src="imagine/style_women_news.png" alt=""></a>
                     <h3><a href="https://cardina.vn/blogs/kien-thuc-thoi-trang/cac-phong-cach-thoi-trang">PHONG CÁCH THỜI TRANG CHO QUÝ CÔ</a></h3>
                 </li>
             </ul>

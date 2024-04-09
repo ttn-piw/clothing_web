@@ -112,10 +112,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -125,36 +129,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/ao1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Croptop hồng</div>
-                            <div class="price">199.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/ao3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Croptop sơ mi</div>
-                            <div class="price">209.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/ao4.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Áo thun đen</div>
-                            <div class="price">259.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/ao2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Croptop tím</div>
-                            <div class="price">199.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/ao5.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi xanh nữ</div>
-                            <div class="price">299.000 VND</div>
-                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -175,10 +149,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -188,25 +166,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/blazer1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi xanh navy nam</div>
-                            <div class="price">359.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/blazer2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi nâu</div>
-                            <div class="price">359.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/blazer3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Sơ mi Oxford nam</div>
-                            <div class="price">399.000 VND</div>
-                        </div>
-                    </div> -->
                 </div>
                 <hr>
                 <!-- VEST/BLAZER ----------------------->
@@ -226,10 +185,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -239,30 +202,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/chanvay.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Chân váy jeans</div>
-                            <div class="price">359.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/chanvay2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Chân váy dạ ngắn</div>
-                            <div class="price">200.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/chanvay3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Chân váy caro</div>
-                            <div class="price">259.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/chanvay4.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Chân váy trắng</div>
-                            <div class="price">299.000 VND</div>
-                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -283,10 +222,14 @@
                                             <img src="<?php echo $row['PImage']; ?>">
                                         </a>
                                     </div>
-                                    <form action="cart.php" method="post">
-                                        <input type="hidden" name="PID" value="<?php echo $row['PID']; ?>">
-                                        <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng">
-                                    </form>
+                                    <?php if ($row['PRemain'] > 0 ){ 
+                                    echo '<form action="cart.php" method="post">
+                                            <input type="hidden" name="PID" value="'. $row['PID'].'">
+                                            <input type="submit" class="BtnBuy" name="submit" value="Đặt hàng"> 
+                                        </form>';
+                                    } else {
+                                        echo '<div class="BtnBuy">Hết hàng</div>';
+                                    } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
                                     <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
                                 </div>
@@ -296,30 +239,6 @@
                             echo "No products available";
                         }   
                     ?>
-                        <!-- <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/quan1.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Quần tây lưng thun</div>
-                            <div class="price">409.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/quan2.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Quần Jeans be</div>
-                            <div class="price">409.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/quan3.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Quần vải ống suông</div>
-                            <div class="price">359.000 VND</div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="/imagine/Product_img/Women_img/quan4.jpg"></div>
-                            <div class ="BtnBuy">Thêm vào giỏ hàng</div>
-                            <div class="item_name">Quần tây ống đứng đen</div>
-                            <div class="price">409.000 VND</div>
-                        </div> -->
                     </div>
                 </div>
             </div>

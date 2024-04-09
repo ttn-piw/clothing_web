@@ -3,6 +3,11 @@
     session_start();
 
     if($_SESSION['del_from_admin'] == 1){
+        echo "<div class='message'>
+                <p> Đăng ký thành công!</p>
+            </div> <br>";
+        echo "<a href='login.php'><button class='btn'>Login now</button></a>";
+        
         $_SESSION['del_from_admin'] = 0;
         header("location: index.php");
     }

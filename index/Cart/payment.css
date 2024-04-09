@@ -10,14 +10,19 @@
     margin-top: 30px;
     padding-left: 20px;
 }
+.content{
+    position: relative;
+}
 .content h1{
     font-size: 40px;
     text-align: center;
 }
-
+.payment{
+    line-height: 50px;
+}
 .info{
     background-color: aquamarine;
-    line-height: 25px;
+    line-height: 30px;
     margin-bottom: 20px;
     font-size: 20px;
 }
@@ -28,7 +33,33 @@
 }
 .info h2{
     font-size: 30px;
-    margin-left: 30px;
+    margin-left: 40px;
     margin-bottom: 10px;
     margin-top: 10px;
+    
+}
+.cart_info .icon_show{
+    font-size: 20px;
+    margin-left: 70%;
+}
+.icon_show {
+    cursor: pointer;
+}
+.feedback input{
+    width: 500px;
+    height: 100px;
+    font-size: 17px;
+    padding-left: 10px;
+}
+.money{
+    float:right;
+    
+    font-size: 30px;
+}
+
+table{
+    display: none;
+}
+table--open{
+    display: block;
 }

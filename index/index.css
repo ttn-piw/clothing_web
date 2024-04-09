@@ -421,19 +421,20 @@ header{
     object-fit: cover;
     overflow: hidden;
 } 
-.new_arrival_block .item .BtnBuy{
-    background-color: #ececec;
+.item .BtnBuy{
+    visibility: hidden;
+    width: 90%;
+}
+.item:hover .BtnBuy{
+    cursor: pointer;
+    visibility: visible;
     color: #000000;
-    outline: none;
-    border-radius: 5px;
+    outline: #ececec;
+    border-radius: 10px;
     transition: 0.5s;
     font-size: 20px;
     font-weight: 500;
-    opacity: 0.8 ;
-    display: none;
-}
-.item:hover .BtnBuy{
-    display: block;
+    opacity: 0.7;
 }
 @media screen and (max-width: 900px) {
     .best_seller_block .list_product{
