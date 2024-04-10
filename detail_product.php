@@ -154,15 +154,6 @@
                 </p>
             </div>
             </div>
-            <!-- <div class="relate_product">
-                <h2>SẢN PHẨM LIÊN QUAN:</h2>
-                <div class="relate_product_img">
-                    <img src="/imagine/Product_img/Men_img/aothun1.jpg" alt="">
-                    <img src="/imagine/Product_img/Men_img/aothun2.jpg" alt="">
-                    <img src="/imagine/Product_img/Men_img/aothun3.jpg" alt="">
-                </div>
-            </div> -->
-
 
         <footer>
             <div class="policy">
@@ -204,6 +195,5 @@
            </div>
        </footer>
         <script src="/index/product_page/homebar.js"></script>
-        <!-- <script src="/index/ScrollIntoView.js"></script> -->
     </body>
 </html>

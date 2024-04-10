@@ -75,7 +75,6 @@
                     echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
                 }
             ?>
-            <!-- <li id="login"><a href="/index/Login_register/login_register.html">Login / Sign up</a></li> -->
           </ul>
         </div>
         </nav>

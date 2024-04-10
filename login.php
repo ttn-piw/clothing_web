@@ -19,18 +19,19 @@
                         if(isset($_POST['submit'])){
                             $email = mysqli_real_escape_string($connect,$_POST['email']);
                             $password = mysqli_real_escape_string($connect,$_POST['password']);
-                            // var_dump($email);
-                            // var_dump($password);
-
+    
                             $result_set = mysqli_query($connect,"SELECT * FROM users
                             WHERE Email='$email' AND Password='$password'") or die("Lỗi select");
                             
                             $row_data = mysqli_fetch_assoc($result_set);
                             
+                            
                             if(!empty($row_data) && is_array($row_data)){
                                 if ($email == 'admin@gmail.com' && $password == 'admin'){
+                                    //admin_page
                                     header("Location: admin_page_product.php");
                                 } else { 
+                                    //index_page
                                     header("Location: index.php");
                                 }
                                 $_SESSION['valid'] = $row_data['Email'];

@@ -39,6 +39,7 @@
                                 <th>Số lượng</th>
                             </tr>
                             <?php
+                                //cart_detail
                                 if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
                                     for ($i=0; $i < sizeof($_SESSION['cus-cart']); $i++) {
                                         echo   '<tr>
@@ -48,8 +49,12 @@
                                                     <td>'.$_SESSION['cus-cart'][$i][5].'</td>
                                                 </tr>';
                                     }
+                                } else {
+                                    echo '<tr>
+                                            <td colspan="4">Chưa có sản phẩm nào trong giỏ hàng</td>
+                                          </tr>';
                                 }
-                            ?>
+                            ?> 
                         </table>
                     </div>
                     <div class="info">

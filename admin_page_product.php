@@ -1,15 +1,6 @@
 <?php
     include("php/config.php");
     session_start();
-   
-    if(isset($_GET['id'])){
-        $ID = $_GET['id'];
-        $sql_del = "DELETE FROM product WHERE PID='$ID' ";
-        $connect->query($sql_del);
-        $connect->close();
-        header("location: admin_page_product.php");
-    };
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,13 +81,11 @@
                             <td name="edit_product_page">
                                 <a href="admin_page_edit_product.php?id=<?php echo $row_data['PID']; ?>&cate_id=<?php echo $row_data['CTG_ID']; ?>">Sửa</a>
                             </td>
-                        </form>
-                        <form action="" method="get">
+                            <form action="" method="get">
                             <td name="del_product_page">
-                                <a onclick="return Del_pro('<?php echo $row_data['PName']; ?>')" href="admin_page_product.php?id=<?php echo $row_data['PID']; ?>">Xóa</a>
+                                <a onclick="return Del_pro('<?php echo $row_data['PName']; ?>')" href="cart.php?name=<?php echo $row_data['PName']; ?>&id=<?php echo $row_data['PID']; ?>">Xóa</a>
                             </td>
                         </form>
-
                     </tr>
                 <?php
                     }
@@ -104,17 +93,10 @@
             </table>
         </div>
     </section>
-    <script>
-        function Del_pro(name_pro){
-            <?php
-                if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])){
-                    $_SESSION['del_from_admin'] = 1;
-                    unset($_SESSION['cus-cart']);
-                }
-                
-            ?>
-            return confirm("Hành động xóa sẽ xóa hết tất cả dữ liệu. Bạn xác nhận xóa sản phẩm: "+ name_pro + "? ");
-        }
-</script>
+    </form>
+        <script>
+            function Del_pro(name_pro) {
+                return confirm("Hành động xóa sẽ xóa hết tất cả dữ liệu. Bạn xác nhận xóa sản phẩm: " + name_pro + "?");}
+        </script>
 </body>
 </html>

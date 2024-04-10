@@ -2,16 +2,6 @@
     include("php/config.php");
     session_start();
 
-    if($_SESSION['del_from_admin'] == 1){
-        echo "<div class='message'>
-                <p> Đăng ký thành công!</p>
-            </div> <br>";
-        echo "<a href='login.php'><button class='btn'>Login now</button></a>";
-        
-        $_SESSION['del_from_admin'] = 0;
-        header("location: index.php");
-    }
-
     $_SESSION['total_money'] = 0;
     if (!isset($_SESSION['username'])) {
         header("Location: login.php");
@@ -23,7 +13,10 @@
        if(isset($_POST['PID'])) {
            $PID = $_POST['PID'];
            $date = date("Y-m-d");
-           $SQL1 = "INSERT INTO orders(ID,PID,O_Date) VALUES('".$_SESSION['username']."','$PID','$date')";
+           $sql_insert_oder = "SELECT * FROM users WHERE Email= '".$_SESSION['valid']."' ";
+           $rs_order = $connect->query($sql_insert_oder);
+           $row_order = $rs_order->fetch_assoc();
+           $SQL1 = "INSERT INTO orders(ID,PID,O_Date) VALUES('".$row_order['ID']."','$PID','$date')";
            $connect->query($SQL1);
            $SQL = "SELECT * FROM product WHERE PID ='$PID'";
            $result = $connect->query($SQL);
@@ -56,31 +49,35 @@
                    }
                }
            }
-       } else {
-           echo "PID is not set";
        }
-   } else {
-       echo "Form was not submitted";
-   }
-   
-   function deleteProduct($index,$del_name) {
-        require_once("php/config.php");
+   } 
+   function deleteProduct($index) {
         if(isset($_SESSION['cus-cart']) && is_array($_SESSION['cus-cart'])) {
             unset($_SESSION['cus-cart'][$index]);
             $_SESSION['cus-cart'] = array_values($_SESSION['cus-cart']);
-            // echo "<script>alert('$del_name')</script>";
-            // $sql_take_id = "SELECT * FROM product WHERE PName = '$del_name'";
-            // $rs_take_id = $connect->query($sql_take_id);
-            // $row_take_id = $rs_take_id->fetch_assoc();
-            // $del_pid = $row_take_id['PID'];
-
-            
         }
     }
 
     if(isset($_POST['del_pro'])){
-        deleteProduct($_POST['del_pro'],$_POST['del_name']);
+        deleteProduct($_POST['del_pro']);
     }
+    if (isset($_GET['name'])){
+        $admin_name = $_GET['name'];
+        for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++){
+            if (strcmp($_SESSION['cus-cart'][$i][1], $admin_name) == 0){
+                deleteProduct($i);
+            }
+        }
+        header("location: admin_page_product.php");
+    }
+    if(isset($_GET['id'])){
+        $ID = $_GET['id'];
+        $sql_del = "DELETE FROM product WHERE PID='$ID' ";
+        $connect->query($sql_del);
+        $connect->close();
+        header("location: admin_page_product.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -267,9 +264,9 @@
                                 </label>
                             </div>
                     </div>
-                    <form action="payment.html" method="get">
+                    <a href="payment.php">
                         <button type="submit" name="get_bill" id="get_bill">THANH TOÁN</button>
-                    </form>
+                    </a>
                 </div>
             </div>
         </div>
