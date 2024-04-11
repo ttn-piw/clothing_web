@@ -26,9 +26,20 @@
                         echo "<a href='javascript:self.history.back()'><button class='btn'>Go back</button></a>";
                     }
                     else {
+
                         mysqli_query($connect,"INSERT INTO users (Username,Email,Password)
                                                 VALUES('$username','$email','$password') ") or die("Lỗi xảy ra");
-                                                
+                        $sql_take_uid = "SELECT ID FROM users WHERE Email = '$email'";
+                        $rs_take_id = $connect->query($sql_take_uid);
+                        if ($rs_take_id->num_rows > 0){
+                            while ($row_take_id = $rs_take_id->fetch_assoc() ){
+                                $uid = $row_take_id['ID'];
+                                $insert_empty_info = "INSERT INTO customers(CName,CPhone,CAddress,UID)
+                                                    VALUES('','','','$uid')";
+                                $connect->query($insert_empty_info);
+                            }
+                        }
+                        // mysqli_query($connect, "INSERT INTO customers(")                    
                         echo "<div class='message'>
                             <p> Đăng ký thành công!</p>
                         </div> <br>";

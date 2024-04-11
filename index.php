@@ -70,7 +70,7 @@
             <?php 
                 if (isset($_SESSION['valid'])) {
                     echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
-                    echo "<li><a href='php/logout.php'>Log out</a></li>";
+                    echo "<li><a href='php/logout.php?valid=" . $_SESSION['valid'] . "'>Log out</a></li>";
                 } else {
                     echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
                 }

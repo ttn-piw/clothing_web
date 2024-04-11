@@ -66,7 +66,7 @@
                     <th>Xóa</th>
                 </tr>
                 <?php
-                $sql_list_account = "  SELECT * FROM users ";
+                $sql_list_account = "  SELECT * FROM users WHERE ID != '1' ";
                
                 $rs = $connect->query($sql_list_account);
                 if($rs->num_rows > 0)

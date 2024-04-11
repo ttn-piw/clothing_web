@@ -53,7 +53,6 @@
                     <form action="" method="post" class="sign-up-form">
                         <?php
                             echo '<h1>Xin chào ' . $_SESSION['username'] . ' !</h1>';
-                            echo '<h1>Xin chào ' . $_SESSION['valid'] . ' !</h1>';
                         ?>
                         <h2>Thông tin khách hàng</h2>
                             <div class="text_input">

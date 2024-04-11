@@ -28,60 +28,60 @@
             </div>
         </header>
         <nav>
-            <div class="home_bar" >
-               <div id="close_menu">X</div>
-             <ul type ="none">
-               <span><img src="imagine/logo.png" width="70px"></span> 
-               <li><a href="index.php">Home</a></li>
-               <li>
-                   <a href="product_page_men.php">Men</a>
-                   <ul class="men_menu" type="none">
-                       <li><a href="">T-shirt</a></li>
-                       <li><a href="">Somi</a></li>
-                       <li><a href="">Vest/Blazer</a></li>
-                       <li><a href="">Quần</a></li>
-                   </ul>
-               </li>
-               <li>
-                   <a href="product_page_women.php">Women</a>
-                   <ul class="women_menu" type="none">
-                       <li><a href="">Áo</a></li>
-                       <li><a href="">Vest/Blazer</a></li>
-                       <li><a href="">Chân váy</a></li>
-                       <li><a href="">Quần</a></li>
-                   </ul>
-               </li>
-               <li>
-                   <a href="">About us</a>
-                   <span id="about_content">
-                       <img src="imagine/logo.png">
-                       <p>
-                           Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
-                           Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
-                           sản phẩm độc đáo và đẹp mắt. Tại đây, chúng tôi tự hào giới thiệu những bộ sưu tập đặc sắc, từ những 
-                           chiếc áo thời trang, đồ trang sức đến những đồ nội thất độc lạ - tất cả đều đậm chất retro và vintage.
-                           <br>
-                           <br>
-                           Chúng tôi không chỉ là một trang web bán đồ, mà còn là không gian của những câu chuyện, kỷ niệm và 
-                           sở thích thú vị. Hãy đồng hành cùng chúng tôi để khám phá và tận hưởng sự độc đáo trong từng sản phẩm. 
-                           Với cam kết chất lượng và dịch vụ tận tâm, chúng tôi mong muốn mang lại cho bạn trải nghiệm mua sắm thú vị
-                           và đặc biệt - nơi bạn có thể tìm thấy những khoảnh khắc retro trong cuộc sống hiện đại. 
-                           Hãy đắm chìm trong không gian vintage của chúng tôi và tạo nên phong cách riêng biệt cho chính mình!
-                       </p>
-                   </span> 
-               </li>
-               <li id="contact_home"><a href="">Contact</a></li>
-                <?php 
-                    if (isset($_SESSION['valid'])) {
-                        echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
-                        echo "<li><a href='php/logout.php'>Log out</a></li>";
-                    } else {
-                        echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
-                    }
-                ?>
-             </ul>
-           </div>
-           </nav>
+         <div class="home_bar" >
+            <div id="close_menu">X</div>
+          <ul type ="none">
+            <span><img src="imagine/logo.png" width="70px"></span> 
+            <li><a href="index.php">Home</a></li>
+            <li>
+                <a href="product_page_men.php">Men</a>
+                <ul class="men_menu" type="none">
+                    <li id="men_tee"><a href="">T-shirt</a></li>
+                    <li><a href="">Somi</a></li>
+                    <li><a href="">Vest/Blazer</a></li>
+                    <li><a href="">Quần</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="product_page_women.php">Women</a>
+                <ul class="women_menu" type="none">
+                    <li><a href="">Áo</a></li>
+                    <li><a href="">Vest/Blazer</a></li>
+                    <li><a href="">Chân váy</a></li>
+                    <li><a href="">Quần</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About us</a>
+                <span id="about_content">
+                    <img src="imagine/logo.png">
+                    <p>
+                        Chào mừng bạn đến với chúng tôi - nơi hội tụ của những trải nghiệm mua sắm độc đáo và phóng khoáng! 
+                        Chúng tôi là địa chỉ tin cậy cho những người yêu thích phong cách vintage, nơi mang đến cho bạn những 
+                        sản phẩm độc đáo và đẹp mắt. Tại đây, chúng tôi tự hào giới thiệu những bộ sưu tập đặc sắc, từ những 
+                        chiếc áo thời trang, đồ trang sức đến những đồ nội thất độc lạ - tất cả đều đậm chất retro và vintage.
+                        <br>
+                        <br>
+                        Chúng tôi không chỉ là một trang web bán đồ, mà còn là không gian của những câu chuyện, kỷ niệm và 
+                        sở thích thú vị. Hãy đồng hành cùng chúng tôi để khám phá và tận hưởng sự độc đáo trong từng sản phẩm. 
+                        Với cam kết chất lượng và dịch vụ tận tâm, chúng tôi mong muốn mang lại cho bạn trải nghiệm mua sắm thú vị
+                        và đặc biệt - nơi bạn có thể tìm thấy những khoảnh khắc retro trong cuộc sống hiện đại. 
+                        Hãy đắm chìm trong không gian vintage của chúng tôi và tạo nên phong cách riêng biệt cho chính mình!
+                    </p>
+                </span> 
+            </li>
+            <li id="contact_home"><a href="">Contact</a></li>
+            <?php 
+                if (isset($_SESSION['valid'])) {
+                    echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
+                    echo "<li><a href='php/logout.php?valid=" . $_SESSION['valid'] . "'>Log out</a></li>";
+                } else {
+                    echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                }
+            ?>
+          </ul>
+        </div>
+        </nav>
 
 
         <div class="container">
