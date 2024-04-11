@@ -1,15 +1,23 @@
 <?php
     include("php/config.php");
     session_start();
-
+  
     $email = $_SESSION['valid'];
+    $c_name = $_POST['cart_name'];
+    $c_address = $_POST['cart_address'];
+    $c_note = $_POST['cart_note'];
+    //Show info
     $sql = "SELECT * FROM users u JOIN customers c ON u.ID = c.UID WHERE u.Email ='$email'";
     $rs = $connect->query($sql);
     if($rs->num_rows > 0 ){
         while($row = $rs->fetch_assoc()){
-            $name = $row['CName'];
+            if ($c_name == '' ) {
+                $name = $row['CName'];
+            } else $name = $c_name;
             $phone = $row['CPhone'];
-            $address = $row['CAddress'];
+            if ($c_address == ''){
+                $address = $row['CAddress'];
+            } else $address = $c_address;
         }
     }
 ?>
@@ -63,7 +71,7 @@
                         <b>Email: </b><span><?php echo $_SESSION['valid']; ?></span><br>
                         <b>Số điện thoại: </b><span><?php echo $phone ?></span><br>
                         <b>Địa chỉ nhận hàng: </b><span><?php echo $address ?></span><br>
-                        <b>Note:</b><span>ándolajnosldjnoaidjioa</span>
+                        <b>Note:</b><span><?php echo $c_note; ?></span>
                     </div>
                    
                     <div class="feedback">

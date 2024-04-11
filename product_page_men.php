@@ -93,14 +93,6 @@
                 <li id="men_vest" class="submenu">Vest/Blazer</li>
                 <li id="men_pant" class="submenu">Quần</li>
             </ul>
-            <!-- <div class="option_arr">
-                <span id="id_option">Sắp xếp:</span>  
-                <select>
-                   <option value="0">Sản phẩm nổi bật</option>
-                   <option value="1">Giá: Tăng dần</option>
-                   <option value="2">Giá: Giảm dần</option>
-                </select>
-           </div> -->
             <div class="content">
                 <div class="tee_space">
                     <div class="title_head">T-SHIRT</div>
@@ -290,6 +282,5 @@
            </div>
        </footer>
         <script src="index/product_page/homebar.js"></script>
-        <!-- <script src="/index/ScrollIntoView.js"></script> -->
     </body>
 </html>

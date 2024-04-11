@@ -214,25 +214,11 @@
                            
                         }
                         ?>
-                        <!-- <tr>
-                            <td><img src="/imagine/Product_img/Men_img/aothun1.jpg" alt=""></td>
-                            <td><p>Áo thun trắng mini-logo</p></td>
-                            <td><p>L</p></td>
-                            <td><select name="" id="">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </td>
-                            <td><p>309.000</p><sub>vnd</sub></td>
-                            <td><span>X</span></td>
-                        </tr> -->
                     </table>
                     <button id="back_shop"><a href="product_page_men.php">TIẾP TỤC MUA SẮM</a></button>
                 </div>
                 <div class="content_right">
+                <form action="payment.php" method="post">
                     <div class="total">
                         Tổng tiền
                         <span id="money"><b><?php
@@ -244,29 +230,31 @@
                     </div>
                     <div class="note">
                         <h3>Ghi chú</h3>
-                        <input type="text" placeholder="Bạn muốn mô tả rõ hơn về đơn hàng...">
+                        <input type="text" name="cart_note" placeholder="Bạn muốn mô tả rõ hơn về đơn hàng...">
                     </div>
                     <div class="shipping_detail">
                         <h2>Thông tin giao hàng</h2>
+                        
                             <div class="text_input">
                                 <label for="Name"><i class="fa-solid fa-user"></i>
-                                    <input type="text" name="cus_name" id="cus_name" placeholder="Họ và tên" required>
+                                    <input type="text" name="cart_name" id="cus_name" placeholder="Họ và tên">
                                 </label>
                             </div>
                             <div class="text_input">
                                 <label for="email"><i class="fa-solid fa-envelope"></i>
-                                    <input type="text" name="email" id="email" placeholder="Email" required>
+                                    <input type="text" name="cart_email" id="email" placeholder="Email">
                                 </label>
                            </div>
                             <div class="text_input">
                                 <label for="address"><i class="fa-solid fa-lock"></i>
-                                    <input type="text" name="address" id="address" placeholder="Địa chỉ giao hàng:" required>
+                                    <input type="text" name="cart_address" id="address" placeholder="Địa chỉ giao hàng:">
                                 </label>
                             </div>
+                            <a href="payment.php">
+                                <button type="submit" name="get_bill" id="get_bill">THANH TOÁN</button>
+                            </a>
                     </div>
-                    <a href="payment.php">
-                        <button type="submit" name="get_bill" id="get_bill">THANH TOÁN</button>
-                    </a>
+                </form>    
                 </div>
             </div>
         </div>
