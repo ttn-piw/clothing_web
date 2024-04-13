@@ -18,7 +18,7 @@
                     $ctg_id = $row_data['CTG_ID'];
                 }
             }
-        } else echo "Can't take ID";
+        } 
 
         if(isset($_POST['edit'])){
             $p_name =  $_POST['pro_name'];
@@ -46,7 +46,7 @@
 
             header("location: admin_page_product.php");
             
-        } else echo "Cant submit";
+        } 
         
 ?>
 <!DOCTYPE html>

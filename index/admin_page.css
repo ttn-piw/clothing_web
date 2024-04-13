@@ -122,3 +122,27 @@ button:hover{
     height: 50px;
     padding-left: 10px;
 }
+/* ADMIN PAGE----------------------------------------------- */
+.profit{
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    text-align: center;
+    height: 100px;
+    padding-top: 10px;
+}
+.profit .order{
+    left:0;
+    padding-top: 10px
+}
+.profit .money{
+    right: 0;
+}
+.profit h3{
+    font-size: 30px;
+    text-decoration:underline;
+
+}
+.profit span{
+    font-size: 25px;
+}
