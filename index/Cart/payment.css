@@ -13,6 +13,7 @@
     position: relative;
     border: 1px solid black;
     padding-left: 10px;
+    margin-bottom: 50px;
 }
 .content h1{
     font-size: 40px;
@@ -35,10 +36,12 @@
     font-size: 30px;
     margin-left: 40px;
     margin-bottom: 10px;
-    margin-top: 10px;
-    
+    margin-top: 30px;
+    text-align: center;
 }
-
+.under_table{
+    padding-left: 15px;
+}
 .cart_info .icon_show{
     font-size: 20px;
     margin-left: 70%;
@@ -70,9 +73,26 @@
     font-size: 30px;
 }
 
-table{
-    display: none;
+.back_home{
+    padding: 20px;
+
 }
-table--open{
-    display: block;
+.back_home button{
+    margin-top: 20px;
+    color: white;
+    background-color: #242526;
+    width: 100px;
+    border-radius: 50px;
+    font-weight: 500;
+    height: 30px;
+    margin-bottom: 20px;
+}
+.back_home button:hover{
+    background-color:darkgray;
+    color: black;
+    font-weight: 600;
+    transition: 0.5s ease-in-out;
+}
+.back_home i{
+    margin-right: 5px;
 }

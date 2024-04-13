@@ -12,12 +12,6 @@
     if(isset($_POST['submit'])) {
        if(isset($_POST['PID'])) {
            $PID = $_POST['PID'];
-           $date = date("Y-m-d");
-           $sql_insert_oder = "SELECT * FROM users WHERE Email= '".$_SESSION['valid']."' ";
-           $rs_order = $connect->query($sql_insert_oder);
-           $row_order = $rs_order->fetch_assoc();
-           $SQL1 = "INSERT INTO orders(ID,PID,O_Date) VALUES('".$row_order['ID']."','$PID','$date')";
-           $connect->query($SQL1);
            $SQL = "SELECT * FROM product WHERE PID ='$PID'";
            $result = $connect->query($SQL);
 
@@ -62,16 +56,16 @@
     if(isset($_POST['del_pro'])){
         deleteProduct($_POST['del_pro']);
         
-        $del_pid = $_POST['del_pid'];
-        $sql_take_id = "SELECT ID FROM users WHERE Email = '{$_SESSION['valid']}'";
-        $rs_take_id = $connect->query($sql_take_id);
-            if ($rs_take_id->num_rows > 0 ){
-                while ($row_take_id = $rs_take_id->fetch_assoc()){
-                    $uid = $row_take_id['ID'];
-                    $sql_del_order = "DELETE FROM orders WHERE PID = '$del_pid' AND ID='$uid'";
-                    $connect->query($sql_del_order); 
-                }
-            }
+        // $del_pid = $_POST['del_pid'];
+        // $sql_take_id = "SELECT ID FROM users WHERE Email = '{$_SESSION['valid']}'";
+        // $rs_take_id = $connect->query($sql_take_id);
+        //     if ($rs_take_id->num_rows > 0 ){
+        //         while ($row_take_id = $rs_take_id->fetch_assoc()){
+        //             $uid = $row_take_id['ID'];
+        //             $sql_del_order = "DELETE FROM orders WHERE PID = '$del_pid' AND ID='$uid'";
+        //             $connect->query($sql_del_order); 
+        //         }
+        //     }
     }
     if (isset($_GET['name'])){
         $admin_name = $_GET['name'];

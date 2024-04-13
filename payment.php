@@ -20,6 +20,34 @@
             } else $address = $c_address;
         }
     }
+    if (isset($_POST['get_bill'])){
+        $date = date("Y-m-d");
+        
+        if (isset($_POST['cart_note'])){
+            $note = $_POST['cart_note'];
+        } else $note = '';
+        $sql_insert_oder = "SELECT * FROM users WHERE Email= '".$_SESSION['valid']."' ";
+        $rs_order = $connect->query($sql_insert_oder);
+        $row_order = $rs_order->fetch_assoc();
+        
+        $SQL1 = "INSERT INTO orders(ID,O_Date,O_Money,O_Note) VALUES('".$row_order['ID']."','$date','".$_SESSION['total_money']."','$note')";
+        $connect->query($SQL1);
+        $last_id = $connect->insert_id;
+
+        for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++){ 
+            $sql_insert_oderdetail = "  INSERT INTO order_detail(od_pid,od_image,od_quantity,od_price,od_total,oid)
+                                        VALUES('".$_SESSION['cus-cart'][$i][6]."',
+                                                '".$_SESSION['cus-cart'][$i][0]."',
+                                                '".$_SESSION['cus-cart'][$i][5]."',
+                                                '".$_SESSION['cus-cart'][$i][2]."',
+                                                '".$_SESSION['cus-cart'][$i][2] * $_SESSION['cus-cart'][$i][5]."',
+                                                '$last_id')";
+            $sql_update_remain = "UPDATE product SET PRemain='".$_SESSION['cus-cart'][$i][4] - $_SESSION['cus-cart'][$i][5]."' WHERE product.PID ='".$_SESSION['cus-cart'][$i][6]."' ";
+            $connect->query($sql_update_remain);
+            $connect->query($sql_insert_oderdetail);
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +60,13 @@
     <body>
         <div class="container">
             <div class="content">
-                <h1>ĐƠN HÀNG</h1>
+                <div class="back_home">
+                    <a href="index.php">
+                        
+                        <button><i class="fa-solid fa-house"></i>Trang chủ</button>
+                    </a>
+                </div>
+                    <h1>ĐƠN HÀNG</h1>
                 <div class="payment">
                     <div class="cart_info">
                         <div class="icon_show">
@@ -65,28 +99,30 @@
                             ?> 
                         </table>
                     </div>
-                    <div class="info">
-                        <h2>Thông tin giao hàng</h2>
-                        <b>Họ và tên: </b><span><?php echo $name; ?></span><br>
-                        <b>Email: </b><span><?php echo $_SESSION['valid']; ?></span><br>
-                        <b>Số điện thoại: </b><span><?php echo $phone ?></span><br>
-                        <b>Địa chỉ nhận hàng: </b><span><?php echo $address ?></span><br>
-                        <b>Note:</b><span><?php echo $c_note; ?></span>
-                    </div>
-                   
-                    <div class="feedback">
-                        <input type="text" name="feedback" placeholder="Nhận xét khách hàng">
-                    </div>
-                    <div class="shipping">
-                        <h2>Phương thức vận chuyển</h2>
-                        <input id="Btn_shipping" type="radio"><span> Giao hàng tận nơi</span>
-                    </div>
-                    <div class="pay_type">
-                        <h2>Phương thức thanh toán</h2>
-                        <input id="Btn_shipping" type="radio"><span> Thanh toán khi nhận hàng</span>
-                    </div>
-                    <div class="money">
-                        <b>Tổng tiền: <?php echo number_format($_SESSION['total_money'],3) ?> vnđ </b>
+                    <div class="under_table">
+                        <div class="info">
+                            <h2>Thông tin giao hàng</h2>
+                            <b>Họ và tên: </b><span><?php echo $name; ?></span><br>
+                            <b>Email: </b><span><?php echo $_SESSION['valid']; ?></span><br>
+                            <b>Số điện thoại: </b><span><?php echo $phone ?></span><br>
+                            <b>Địa chỉ nhận hàng: </b><span><?php echo $address ?></span><br>
+                            <b>Note:</b><span><?php echo $c_note; ?></span>
+                        </div>
+                    
+                        <div class="feedback">
+                            <input type="text" name="feedback" placeholder="Nhận xét khách hàng">
+                        </div>
+                        <div class="shipping">
+                            <h2>Phương thức vận chuyển</h2>
+                            <input id="Btn_shipping" type="radio"><span> Giao hàng tận nơi</span>
+                        </div>
+                        <div class="pay_type">
+                            <h2>Phương thức thanh toán</h2>
+                            <input id="Btn_shipping" type="radio"><span> Thanh toán khi nhận hàng</span>
+                        </div>
+                        <div class="money">
+                            <b>Tổng tiền: <?php echo number_format($_SESSION['total_money'],3) ?> vnđ </b>
+                        </div>
                     </div>
                 </div>      
             </div>
