@@ -146,3 +146,10 @@ button:hover{
 .profit span{
     font-size: 25px;
 }
+.table_order_detail{
+    font-size: 20px;
+}
+.table_order_detail span{
+    margin: 0 45px;
+
+}

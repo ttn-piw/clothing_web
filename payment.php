@@ -1,7 +1,7 @@
 <?php
     include("php/config.php");
-    session_start();
-  
+    session_start(); 
+
     $email = $_SESSION['valid'];
     $c_name = $_POST['cart_name'];
     $c_address = $_POST['cart_address'];

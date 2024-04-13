@@ -34,6 +34,7 @@
     <section class="admin-content">
     <div class="admin-content-left">
             <ul>
+                <li><a href="admin_page.php">Trang chủ</a></li>
                 <li><a href="">Tài khoản</a>
                     <ul>
                         <li><a href="admin_page_account.php">Danh sách tài khoản</a></li>

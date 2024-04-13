@@ -32,8 +32,9 @@
     ?>
     </header>
     <section class="admin-content">
-        <div class="admin-content-left">
+    <div class="admin-content-left">
             <ul>
+                <li><a href="admin_page.php">Trang chủ</a></li>
                 <li><a href="">Tài khoản</a>
                     <ul>
                         <li><a href="admin_page_account.php">Danh sách tài khoản</a></li>
@@ -49,6 +50,7 @@
                     <ul>
                         <li><a href="admin_page_add_product.php">Thêm sản phẩm</a></li>
                         <li><a href="admin_page_product.php">Danh sách sản phẩm</a></li>
+                        <li><a href="admin_page_search.php">Tìm kiếm sản phẩm</a></li>
                     </ul>
                 </li>
             </ul>
