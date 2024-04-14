@@ -35,21 +35,11 @@
             <li><a href="index.php">Home</a></li>
             <li>
                 <a href="product_page_men.php">Men</a>
-                <ul class="men_menu" type="none">
-                    <li id="men_tee"><a href="">T-shirt</a></li>
-                    <li><a href="">Somi</a></li>
-                    <li><a href="">Vest/Blazer</a></li>
-                    <li><a href="">Quần</a></li>
-                </ul>
+                <ul class="men_menu" type="none"></ul>
             </li>
             <li>
                 <a href="product_page_women.php">Women</a>
-                <ul class="women_menu" type="none">
-                    <li><a href="">Áo</a></li>
-                    <li><a href="">Vest/Blazer</a></li>
-                    <li><a href="">Chân váy</a></li>
-                    <li><a href="">Quần</a></li>
-                </ul>
+                <ul class="women_menu" type="none"></ul>
             </li>
             <li>
                 <a href="#">About us</a>
@@ -98,7 +88,7 @@
                     <div class="title_head">T-SHIRT</div>
                     <div class="grid_container">
                     <?php
-                        $sql = "SELECT * FROM product WHERE CTG_ID = 3";
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 3 OR CTG_ID = 13 OR CTG_ID = 26";
                         $result = $connect->query($sql);
                             // Loop through each product and display them
                         if ($result->num_rows > 0) {
@@ -119,7 +109,7 @@
                                         echo '<div class="BtnBuy">Hết hàng</div>';
                                     } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
-                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 0); ?> VND</div>
                                 </div>
                             <?php
                             }
@@ -135,7 +125,7 @@
                     <div class="title_head">SOMI</div>
                     <div class="grid_container">
                     <?php
-                        $sql = "SELECT * FROM product WHERE CTG_ID = 4";
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 4 OR CTG_ID = 14 OR CTG_ID = 27 ";
                         $result = $connect->query($sql);
                             // Loop through each product and display them
                         if ($result->num_rows > 0) {
@@ -156,7 +146,7 @@
                                         echo '<div class="BtnBuy">Hết hàng</div>';
                                     } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
-                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 0); ?> VND</div>
                                 </div>
                             <?php
                             }
@@ -171,7 +161,7 @@
                     <div class="title_head">VEST/BLAZER NAM</div>
                     <div class="grid_container">
                     <?php
-                        $sql = "SELECT * FROM product WHERE CTG_ID = 5";
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 5 OR CTG_ID = 15 OR CTG_ID = 28";
                         $result = $connect->query($sql);
                             // Loop through each product and display them
                         if ($result->num_rows > 0) {
@@ -192,7 +182,7 @@
                                         echo '<div class="BtnBuy">Hết hàng</div>';
                                     } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
-                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 0); ?> VND</div>
                                 </div>
                             <?php
                             }
@@ -208,7 +198,7 @@
                     <div class="title_head">QUẦN NAM</div>
                     <div class="grid_container">
                     <?php
-                        $sql = "SELECT * FROM product WHERE CTG_ID = 6";
+                        $sql = "SELECT * FROM product WHERE CTG_ID = 6 OR CTG_ID = 16 OR CTG_ID = 29";
                         $result = $connect->query($sql);
                             // Loop through each product and display them
                         if ($result->num_rows > 0) {
@@ -229,7 +219,7 @@
                                         echo '<div class="BtnBuy">Hết hàng</div>';
                                     } ?>
                                     <div class="item_name"><?php echo $row['PName']; ?></div>
-                                    <div class="price"><?php echo number_format($row['PPrice'], 3); ?> VND</div>
+                                    <div class="price"><?php echo number_format($row['PPrice'], 0); ?> VND</div>
                                 </div>
                             <?php
                             }

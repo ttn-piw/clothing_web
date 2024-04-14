@@ -74,7 +74,7 @@
                         <td><p><?php echo $row_data['PName'] ?></p></td>
                         <td><img src="<?php echo $row_data['PImage'] ?>" alt=""></td>
                         <td><p><?php echo $row_data['PSize'] ?></p></td>
-                        <td><p><?php echo number_format($row_data['PPrice'],3) ?></p><sub>vnd</sub></td>
+                        <td><p><?php echo number_format($row_data['PPrice'],0) ?></p><sub>vnd</sub></td>
                         <td><?php echo $row_data['PRemain'] ?></td>
                         <td><?php echo $row_data['PDetail'] ?></td>
                         <td><?php echo $row_data['CTG_Name'] ?></td>

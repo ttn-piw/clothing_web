@@ -55,17 +55,6 @@
 
     if(isset($_POST['del_pro'])){
         deleteProduct($_POST['del_pro']);
-        
-        // $del_pid = $_POST['del_pid'];
-        // $sql_take_id = "SELECT ID FROM users WHERE Email = '{$_SESSION['valid']}'";
-        // $rs_take_id = $connect->query($sql_take_id);
-        //     if ($rs_take_id->num_rows > 0 ){
-        //         while ($row_take_id = $rs_take_id->fetch_assoc()){
-        //             $uid = $row_take_id['ID'];
-        //             $sql_del_order = "DELETE FROM orders WHERE PID = '$del_pid' AND ID='$uid'";
-        //             $connect->query($sql_del_order); 
-        //         }
-        //     }
     }
     if (isset($_GET['name'])){
         $admin_name = $_GET['name'];
@@ -206,7 +195,7 @@
                                     </td>
                                     <td>
                                         <p class="product_money">
-                                            '.  number_format($_SESSION['cus-cart'][$i][2] * $_SESSION['cus-cart'][$i][5], 3).'
+                                            '.  number_format($_SESSION['cus-cart'][$i][2] * $_SESSION['cus-cart'][$i][5], 0).'
                                         </p>
                                     </td>
                                     <td>
@@ -231,36 +220,42 @@
                             for ($i=0; $i < sizeof($_SESSION['cus-cart']) ; $i++) { 
                                 $_SESSION['total_money'] = $_SESSION['total_money'] + ($_SESSION['cus-cart'][$i][2] * $_SESSION['cus-cart'][$i][5]);
                             }
-                                echo number_format($_SESSION['total_money'],3); ?> vnd</b>
+                                echo number_format($_SESSION['total_money'],0); ?> vnd</b>
                         </span>
                     </div>
                     <div class="note">
                         <h3>Ghi chú</h3>
                         <input type="text" name="cart_note" placeholder="Bạn muốn mô tả rõ hơn về đơn hàng...">
                     </div>
-                    <div class="shipping_detail">
-                        <h2>Thông tin giao hàng</h2>
+                    <?php
+                        $sql_take_info_shipping = " SELECT * FROM users u JOIN customers c ON u.ID = c.UID 
+                                                    WHERE Email ='" . $_SESSION["valid"] . "' AND CName != '' ";
+                        $rs_info_ship = $connect->query($sql_take_info_shipping);
+                        if ($rs_info_ship->num_rows == 0 ){ ?>
+                        <div class="shipping_detail">
+                            <h2>Thông tin giao hàng</h2>
                         
                             <div class="text_input">
                                 <label for="Name"><i class="fa-solid fa-user"></i>
-                                    <input type="text" name="cart_name" id="cus_name" placeholder="Họ và tên">
+                                    <input type="text" name="cart_name" id="cus_name" placeholder="Họ và tên" required>
                                 </label>
                             </div>
                             <div class="text_input">
                                 <label for="email"><i class="fa-solid fa-envelope"></i>
-                                    <input type="text" name="cart_email" id="email" placeholder="Email">
+                                    <input type="text" name="cart_email" id="email" placeholder="Email" required>
                                 </label>
                            </div>
                             <div class="text_input">
                                 <label for="address"><i class="fa-solid fa-lock"></i>
-                                    <input type="text" name="cart_address" id="address" placeholder="Địa chỉ giao hàng:">
+                                    <input type="text" name="cart_address" id="address" placeholder="Địa chỉ giao hàng:" required>
                                 </label>
                             </div>
+                        </div>
+                        <?php } ?>
                             <a href="payment.php">
                                 <button type="submit" name="get_bill" id="get_bill">THANH TOÁN</button>
                             </a>
-                    </div>
-                </form>    
+                </form>  
                 </div>
             </div>
         </div>

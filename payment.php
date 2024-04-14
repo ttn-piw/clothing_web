@@ -3,8 +3,12 @@
     session_start(); 
 
     $email = $_SESSION['valid'];
-    $c_name = $_POST['cart_name'];
-    $c_address = $_POST['cart_address'];
+    if(isset($_POST['cart_name'])){
+        $c_name = $_POST['cart_name'];
+    } else $c_name = "";
+    if (isset($_POST['cart_address'])){
+        $c_address = $_POST['cart_address'];
+    } else $c_address = "";
     $c_note = $_POST['cart_note'];
     //Show info
     $sql = "SELECT * FROM users u JOIN customers c ON u.ID = c.UID WHERE u.Email ='$email'";
@@ -121,7 +125,7 @@
                             <input id="Btn_shipping" type="radio"><span> Thanh toán khi nhận hàng</span>
                         </div>
                         <div class="money">
-                            <b>Tổng tiền: <?php echo number_format($_SESSION['total_money'],3) ?> vnđ </b>
+                            <b>Tổng tiền: <?php echo number_format($_SESSION['total_money'],0) ?> vnđ </b>
                         </div>
                     </div>
                 </div>      

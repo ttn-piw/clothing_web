@@ -73,7 +73,7 @@
                 </div>
                 <div class="money">
                     <h3>Doanh thu</h3>
-                    <span><?php echo number_format($total_profit,3); ?></span><sub> vnđ</sub>
+                    <span><?php echo number_format($total_profit,0); ?></span><sub> vnđ</sub>
                 </div>
             </div>
             <table>
@@ -84,13 +84,13 @@
                     <th>Ngày đặt hàng</th>
                     <th>Ghi chú</th>
                     <th>Chi tiết đơn
-                        <table>
+                        <!-- <table>
                             <tr>
                                 <th>Ảnh</th>
                                 <th>Số lượng</th>
                                 <th>Tổng tiền</th>
                             </tr>
-                        </table>
+                        </table> -->
                     </th>
                     <th>Tổng tiền</th>
                 </tr>
@@ -108,10 +108,10 @@
                 <tr>
                     <td><?php echo $oid; ?></td>
                     <td><?php 
-                            $sql_info_cus = "SELECT * FROM customers WHERE UID = '".$uid."'";
+                            $sql_info_cus = "SELECT * FROM users WHERE ID = '".$uid."'";
                             $rs_info_cus = $connect->query($sql_info_cus);
                             $row_info_cus =  $rs_info_cus->fetch_assoc();
-                            echo $row_info_cus['CName'];
+                            echo $row_info_cus['Email'];
                         ?>
                     </td>
                     <td><?php echo $date; ?></td>
@@ -128,8 +128,8 @@
                                     
                                     echo "  <div class = 'table_order_detail'>
                                                 <img src='$od_image' width='100px'>
-                                                <span>".$od_quantity."</span>
-                                                <span>".$od_total."</span>
+                                                <span>SL:".$od_quantity."</span>
+                                                <span>".number_format($od_total,0)."<sub> vnđ</sub></span>
                                             </div>";
                                 }
                             }
@@ -137,10 +137,10 @@
                         <!-- <div class = 'table_order_detail'>
                             <img src='imagine/aothun.jpg' width='100px'>
                             <span>"1"</span>
-                            <span>"300"</span>
+                            <span>"300,000.000"</span>
                         </div> -->
                     </td>
-                    <td><?php echo $total_money; ?></td>
+                    <td><?php echo number_format($total_money,0) ;?><sub> vnđ</sub></td>
                 </tr>
                 <?php
                         }

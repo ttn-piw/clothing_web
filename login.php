@@ -29,7 +29,7 @@
                             if(!empty($row_data) && is_array($row_data)){
                                 if ($email == 'admin@gmail.com' && $password == 'admin'){
                                     //admin_page
-                                    header("Location: admin_page_product.php");
+                                    header("Location: admin_page.php");
                                 } else { 
                                     //index_page
                                     header("Location: index.php");
