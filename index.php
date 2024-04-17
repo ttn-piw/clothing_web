@@ -106,7 +106,7 @@
                <ul class="list_product" >
                <?php
                 $sql = "SELECT * FROM product p JOIN categories c ON p.CTG_ID = c.CTG_ID 
-                        WHERE c.CTG_Name LIKE '%+ NA%'";
+                        WHERE c.CTG_Name LIKE '%+ NA%' OR c.CTG_Name='New Arrival'";
                 $result = $connect->query($sql);
                 // Loop through each product and display them
                 if ($result->num_rows > 0) {
@@ -164,7 +164,7 @@
             <ul class="list_product" >
                 <?php
                     $sql = "SELECT * FROM product p JOIN categories c ON p.CTG_ID = c.CTG_ID 
-                            WHERE c.CTG_Name LIKE '%+ BS%'";
+                            WHERE c.CTG_Name LIKE '%+ BS%' OR c.CTG_Name='Best Seller'";
                     $result = $connect->query($sql);
                     // Loop through each product and display them
                     if ($result->num_rows > 0) {
