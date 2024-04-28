@@ -298,5 +298,9 @@
                </span> 
            </div>
        </footer>
+        <script src="index/intro_space.js"></script>
+        <script src="index/home_bar_index.js"></script>
+        <script src="index/best_seller.js"></script>
+        <script src="index/new_arrival.js"></script>
     </body>
 </html>

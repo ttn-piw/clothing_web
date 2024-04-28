@@ -17,6 +17,16 @@ header{
     border-bottom: 2px solid #dddd;
     text-align: center;
 }
+header ul{
+    font-size: 20px;
+    float: right;
+    margin-right: 5%;
+    color: aqua;
+}
+header button i{
+    justify-content: center;
+    color: white;
+}
 .admin-content{
     padding-top: 50px;
     display: flex;

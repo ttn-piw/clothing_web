@@ -16,20 +16,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin's Page</title>
+    <title>Admin's Page Category</title>
     <link rel="stylesheet" href="index/admin_page.css">
 </head>
 <body>
     <header>
-        <h1>TOP</h1>
-    <?php
-        if (isset($_SESSION['valid'])) {
-            echo '<li id=login><a href="customer_info.php">Xin chào ' . $_SESSION['username'] . '!</a></li>';
-            echo "<li><a href='php/logout.php'>Log out</a></li>";
-        } else {
-            echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
-        }
-    ?>
+        <h1>ER Space</h1>
+        <ul type="none">
+            <?php
+                if (isset($_SESSION['valid'])) {
+                    echo '<li id="login">
+                            Xin chào ' . $_SESSION['username'] . '!
+                            <a href="php/logout.php"><button><i class="fa-solid fa-right-from-bracket"></i></button></a>
+                        </li>';
+
+                } else {
+                    echo '<li id="login"><a href="login.php">Login / Sign up</a></li>';
+                }
+            ?>
+        </ul>
     </header>
     <section class="admin-content">
     <div class="admin-content-left">
