@@ -1,5 +1,6 @@
 <?php
     include("php/config.php");
+    session_start();
         if(isset($_GET['id'])){
             $ID = $_GET['id'];
             $cate_id_ = $_GET['cate_id'];
@@ -104,7 +105,7 @@
                 <div class="text_input">
                     <label for="pro_name">
                         <div class="head">Tên sản phẩm</div>
-                        <input type="text" name="pro_name" value="<?php echo $name?>">
+                        <input type="text" name="pro_name" value="<?php echo $name?>" required>
                     </label>
                 </div>
                 <div class="text_input">
@@ -117,7 +118,7 @@
                 <div class="text_input">
                     <label for="pro_price">
                         <div class="head">Giá sản phẩm</div>
-                        <input type="number" id="pro_price" name="pro_price"  value="<?php echo $price?>"><sub> vnd</sub>
+                        <input type="number" id="pro_price" name="pro_price"  value="<?php echo $price?>" required><sub> vnd</sub> 
                     </label>
                 </div>
                 <div class="text_input">
@@ -134,7 +135,7 @@
                 <div class="text_input">
                     <label for="pro_quantity">
                         <div class="head">Số lượng sản phẩm</div>
-                        <input type="number" id="pro_quantity" name="pro_quantity"  value="<?php echo $remain?>">
+                        <input type="number" id="pro_quantity" name="pro_quantity"  value="<?php echo $remain?>" required>
                     </label>
                 </div>
                 <div class="text_input">

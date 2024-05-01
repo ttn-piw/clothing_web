@@ -172,7 +172,7 @@
                             if($action === 'plus' && $_SESSION['cus-cart'][$productIndex][5] < $_SESSION['cus-cart'][$productIndex][4]) {
                                 $_SESSION['cus-cart'][$productIndex][5]++;
                             } elseif($action === 'minus') {
-                                if($_SESSION['cus-cart'][$productIndex][5] > 0) {
+                                if($_SESSION['cus-cart'][$productIndex][5] > 1) {
                                     $_SESSION['cus-cart'][$productIndex][5]--;
                                 }
                             }
@@ -246,7 +246,7 @@
                                 </label>
                            </div>
                             <div class="text_input">
-                                <label for="address"><i class="fa-solid fa-lock"></i>
+                                <label for="address"><i class="fa-solid fa-location-dot"></i>
                                     <input type="text" name="cart_address" id="address" placeholder="Địa chỉ giao hàng:" required>
                                 </label>
                             </div>
